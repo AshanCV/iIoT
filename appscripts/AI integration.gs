@@ -21,7 +21,7 @@ function callAI() {
 
   // Call OpenAI API
   var apiKey = "         "; // Replace with your OpenAI API key
-  var apiUrl = "https://api.openai.com/v1/completions";
+//  var apiUrl = "https://api.openai.com/v1/completions";
   
   var options = {
     method: "post",
