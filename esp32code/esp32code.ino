@@ -1,8 +1,8 @@
 #include "WiFi.h"
 #include <HTTPClient.h>
 
-const char* ssid = "LPV home";
-const char* password = "Gq7076@slt_123";
+const char* ssid = "your ssid";
+const char* password = "***password***";
 
 String Web_App_URL = "https://script.google.com/macros/s/AKfycbzZxWDRR0RSKmfvK0tIdyNQr2f89WYXvqhZe5Psqap0p2SOkQLodzuc8dQhR4i99sPMOQ/exec";
 
