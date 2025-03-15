@@ -20,7 +20,7 @@ function callAI() {
   var fullPrompt = "Analyze the following data and respond to the prompt:\n" + dataContext + "\n\nPrompt: " + userPrompt;
 
   // Call OpenAI API
-  var apiKey = "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"; // Replace with your OpenAI API key
+  var apiKey = "         "; // Replace with your OpenAI API key
   var apiUrl = "https://api.openai.com/v1/completions";
   
   var options = {
