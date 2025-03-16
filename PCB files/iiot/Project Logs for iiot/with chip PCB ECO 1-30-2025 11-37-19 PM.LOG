@@ -1,0 +1,27 @@
+Added Component: Designator=U(MODULE_ESP32-DEVKITC)
+Add component (AddParameter): Name = "Availability"; Value = "Unavailable"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "MF"; Value = "Espressif Systems"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "MP"; Value = "ESP32-DEVKITC-32D-F"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Package"; Value = "None"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Price"; Value = "None"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "SnapEDA_Link"; Value = "https://www.snapeda.com/parts/ESP32-DEVKITC-32D-F/Espressif%20Systems/view-part/4220172/?ref=snap"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = ""; VariantName = "[No Variations]"
+Added Pin To Net: NetName=NetR7_1 Pin=U-5
+Added Pin To Net: NetName=NetR8_1 Pin=U-6
+Added Pin To Net: NetName=NetR9_1 Pin=U-7
+Added Pin To Net: NetName=NetR10_1 Pin=U-8
+Added Pin To Net: NetName=NetR11_1 Pin=U-9
+Added Pin To Net: NetName=NetR12_1 Pin=U-10
+Added Pin To Net: NetName=GND Pin=U-14
+Added Pin To Net: NetName=+5 Pin=U-19
+Added Pin To Net: NetName=NetR1_2 Pin=U-26
+Added Pin To Net: NetName=NetR2_2 Pin=U-27
+Added Pin To Net: NetName=NetR3_2 Pin=U-28
+Added Pin To Net: NetName=NetR4_2 Pin=U-29
+Added Pin To Net: NetName=NetR5_2 Pin=U-30
+Added Pin To Net: NetName=NetR6_2 Pin=U-31
+Added Pin To Net: NetName=GND Pin=U-32
+Added Pin To Net: NetName=NetU2_3 Pin=U-33
+Added Pin To Net: NetName=NetU2_2 Pin=U-36
+Added Pin To Net: NetName=GND Pin=U-38
+Added Member To Class: ClassName=dev module Member=Component U ESP32-DEVKITC

@@ -1,0 +1,5 @@
+Change Component Footprint: Designator=MD? Old Footprint=FP-ESP32-WROOM-32D_16MB-MFG New Footprint=FP-ESP32-WROOM-32D_4MB-MFG
+Change Component Comment : Designator=MD? Old Comment=ESP32-WROOM-32D (16MB) New Comment=ESP32-WROOM-32D (4MB)
+Change Managed Component Library Link : Designator=MD? Old VaultGUID=B7D15EC3-160A-466F-A46C-7801FE6295A7 New VaultGUID=B7D15EC3-160A-466F-A46C-7801FE6295A7 Old ItemGUID=1DC3A1F9-05B2-4032-95DB-05F12567308C New ItemGUID=95D1CBE9-B25F-4531-83BD-8516E28FA25F Old RevisionGUID=96AE9B30-E040-4F76-99D6-0C3B0BFE78D4 New RevisionGUID=43687069-A368-4350-8457-8663CF283B07
+Change component parameters: Designator = "MD?" ("MD?"); Footprint = "FP-ESP32-WROOM-32D_16MB-MFG"; UniqueID = "\COHTZYYK" ("\COHTZYYK")
+Added Member To Class: ClassName=Sheet1 Member=Component MD? ESP32-WROOM-32D (4MB)

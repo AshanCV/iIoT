@@ -1,0 +1,27 @@
+Added Component: Designator=J1(FP-B2B-XH-A_LF_SN-MFG)
+Added Component: Designator=P8(691311500104)
+Added Component: Designator=U8(MODULE_3296)
+Add component (AddParameter): Name = "Availability"; Value = "In Stock"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Check_prices"; Value = "https://www.snapeda.com/parts/3296/Adafruit+Industries/view-part/?ref=eda"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "MF"; Value = "Adafruit"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "MP"; Value = "3296"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Package"; Value = "None"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Price"; Value = "None"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Purchase-URL"; Value = "https://pricing.snapeda.com/search/part/3296/?ref=eda"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "SnapEDA_Link"; Value = "https://www.snapeda.com/parts/3296/Adafruit+Industries/view-part/?ref=snap"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = ""; VariantName = "[No Variations]"
+Add Pin To Net: Unknown Pin: Pin J1-1
+Add Pin To Net: Unknown Pin: Pin J1-2
+Added Pin To Net: NetName=+5 Pin=U8-4
+Added Pin To Net: NetName=GND Pin=U8-5
+Added Pin To Net: NetName=NetP8_1 Pin=U8-3
+Added Net: Name=NetP8_1
+Added Pin To Net: NetName=NetP8_2 Pin=U8-2
+Added Net: Name=NetP8_2
+Added Pin To Net: NetName=NetP8_3 Pin=U2-6
+Added Net: Name=NetP8_3
+Added Pin To Net: NetName=NetP8_4 Pin=R29-2
+Added Net: Name=NetP8_4
+Add Class Member: Failed to add class member : Component J1 B2B-XH-A(LF)(SN)
+Add Class Member: Failed to add class member : Component P8 691311500104
+Added Member To Class: ClassName=chip Member=Component U8 3296

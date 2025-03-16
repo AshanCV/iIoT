@@ -1,0 +1,351 @@
+Removed Pin From Net: NetName=+5 Pin=J1-1
+Removed Pin From Net: NetName=NetJ2_2 Pin=K1-3
+Removed Pin From Net: NetName=NetJ2_4 Pin=K1-4
+Removed Pin From Net: NetName=GND Pin=K1-5
+Removed Pin From Net: NetName=NetJ3_3 Pin=K2-3
+Removed Pin From Net: NetName=NetJ2_1 Pin=K2-4
+Removed Pin From Net: NetName=GND Pin=K2-5
+Removed Pin From Net: NetName=NetJ4_4 Pin=K3-3
+Removed Pin From Net: NetName=NetJ3_2 Pin=K3-4
+Removed Pin From Net: NetName=GND Pin=K3-5
+Removed Pin From Net: NetName=NetJ4_1 Pin=K4-3
+Removed Pin From Net: NetName=NetJ4_3 Pin=K4-4
+Removed Pin From Net: NetName=GND Pin=K4-5
+Removed Pin From Net: NetName=NetJ5_2 Pin=K5-3
+Removed Pin From Net: NetName=NetJ5_4 Pin=K5-4
+Removed Pin From Net: NetName=GND Pin=K5-5
+Removed Pin From Net: NetName=NetJ6_3 Pin=K6-3
+Removed Pin From Net: NetName=NetJ5_1 Pin=K6-4
+Removed Pin From Net: NetName=GND Pin=K6-5
+Removed Pin From Net: NetName=GND Pin=U1-3
+Removed Pin From Net: NetName=GND Pin=U1-5
+Removed Pin From Net: NetName=+5 Pin=U1-8
+Removed Pin From Net: NetName=+5 Pin=U2-4
+Removed Pin From Net: NetName=GND Pin=U3-3
+Removed Pin From Net: NetName=GND Pin=U3-5
+Removed Pin From Net: NetName=+5 Pin=U3-8
+Removed Pin From Net: NetName=GND Pin=U4-3
+Removed Pin From Net: NetName=GND Pin=U4-5
+Removed Pin From Net: NetName=+5 Pin=U4-8
+Removed Pin From Net: NetName=GND Pin=U5-3
+Removed Pin From Net: NetName=GND Pin=U5-5
+Removed Pin From Net: NetName=+5 Pin=U5-8
+Removed Pin From Net: NetName=+5 Pin=U6-8
+Removed Pin From Net: NetName=+5 Pin=U7-8
+Removed Pin From Net: NetName=GND Pin=U8-3
+Removed Pin From Net: NetName=GND Pin=U8-5
+Removed Pin From Net: NetName=+5 Pin=U8-8
+Removed Pin From Net: NetName=GND Pin=U9-3
+Removed Pin From Net: NetName=GND Pin=U9-5
+Removed Pin From Net: NetName=+5 Pin=U9-8
+Removed Pin From Net: NetName=GND Pin=U10-3
+Removed Pin From Net: NetName=GND Pin=U10-5
+Removed Pin From Net: NetName=+5 Pin=U10-8
+Removed Pin From Net: NetName=GND Pin=U11-3
+Removed Pin From Net: NetName=GND Pin=U11-5
+Removed Pin From Net: NetName=+5 Pin=U11-8
+Removed Pin From Net: NetName=GND Pin=U12-3
+Removed Pin From Net: NetName=GND Pin=U12-5
+Removed Pin From Net: NetName=+5 Pin=U12-8
+Removed Pin From Net: NetName=GND Pin=U13-3
+Removed Pin From Net: NetName=GND Pin=U13-5
+Removed Pin From Net: NetName=+5 Pin=U13-8
+Removed Pin From Net: NetName=+5 Pin=U-19
+Removed Pin From Net: NetName=NetR5_2 Pin=U-30
+Removed Pin From Net: NetName=NetR6_2 Pin=U-31
+Removed Member From Class: ClassName=outputs Member=K1
+Removed Member From Class: ClassName=outputs Member=K2
+Removed Member From Class: ClassName=outputs Member=K3
+Removed Member From Class: ClassName=outputs Member=K4
+Removed Member From Class: ClassName=outputs Member=K5
+Removed Member From Class: ClassName=outputs Member=K6
+Removed Member From Class: ClassName=outputs Member=R1
+Removed Member From Class: ClassName=outputs Member=R2
+Removed Member From Class: ClassName=outputs Member=R3
+Removed Member From Class: ClassName=outputs Member=R4
+Removed Member From Class: ClassName=outputs Member=U1
+Removed Member From Class: ClassName=outputs Member=U3
+Removed Member From Class: ClassName=outputs Member=U4
+Removed Member From Class: ClassName=outputs Member=U5
+Removed Member From Class: ClassName=inputs Member=U8
+Removed Member From Class: ClassName=inputs Member=U9
+Removed Member From Class: ClassName=inputs Member=U10
+Removed Member From Class: ClassName=inputs Member=U11
+Removed Member From Class: ClassName=inputs Member=U12
+Removed Member From Class: ClassName=inputs Member=U13
+Added Component: Designator=D?(FP-1N4007-MFG)
+Added Component: Designator=D?(FP-1N4007-MFG)
+Added Component: Designator=D?(FP-1N4007-MFG)
+Added Component: Designator=D?(FP-1N4007-MFG)
+Added Component: Designator=D?(FP-1N4007-MFG)
+Added Component: Designator=D?(FP-1N4007-MFG)
+Added Component: Designator=D?(FP-DO-35-MFG)
+Added Component: Designator=D?(FP-DO-35-MFG)
+Added Component: Designator=D?(FP-DO-35-MFG)
+Added Component: Designator=D?(FP-DO-35-MFG)
+Added Component: Designator=D?(FP-DO-35-MFG)
+Added Component: Designator=D?(FP-DO-35-MFG)
+Added Component: Designator=J?(FP-1803293-MFG)
+Added Component: Designator=K?(FP-JS1-B-5V-F-MFG)
+Added Component: Designator=K?(FP-JS1-B-5V-F-MFG)
+Added Component: Designator=K?(FP-JS1-B-5V-F-MFG)
+Added Component: Designator=K?(FP-JS1-B-5V-F-MFG)
+Added Component: Designator=K?(FP-JS1-B-5V-F-MFG)
+Added Component: Designator=K?(FP-JS1-B-5V-F-MFG)
+Added Component: Designator=Q?(FP-PC817X1J000F-MFG)
+Added Component: Designator=Q?(FP-135AR-MFG)
+Added Component: Designator=Q?(FP-PC817X1J000F-MFG)
+Added Component: Designator=Q?(FP-135AR-MFG)
+Added Component: Designator=Q?(FP-PC817X1J000F-MFG)
+Added Component: Designator=Q?(FP-135AR-MFG)
+Added Component: Designator=Q?(FP-135AR-MFG)
+Added Component: Designator=Q?(FP-135AR-MFG)
+Added Component: Designator=Q?(FP-PC817X1J000F-MFG)
+Added Component: Designator=Q?(FP-PC817X1J000F-MFG)
+Added Component: Designator=Q?(FP-PC817X1J000F-MFG)
+Added Component: Designator=Q?(FP-PC817X1J000F-MFG)
+Added Component: Designator=Q?(FP-PC817X1J000F-MFG)
+Added Component: Designator=Q?(FP-PC817X1J000F-MFG)
+Added Component: Designator=Q?(FP-PC817X1J000F-MFG)
+Added Component: Designator=Q?(FP-PC817X1J000F-MFG)
+Added Component: Designator=Q?(FP-135AR-MFG)
+Added Component: Designator=Q?(FP-PC817X1J000F-MFG)
+Added Component: Designator=Q?(FP-135AR-MFG)
+Added Component: Designator=R?(FP-CF14-MFG)
+Added Component: Designator=R?(FP-CF14-MFG)
+Added Component: Designator=R?(FP-CF14-MFG)
+Added Component: Designator=R?(FP-CF14-MFG)
+Added Component: Designator=R?(FP-CF14-MFG)
+Added Component: Designator=R?(FP-CF14-MFG)
+Added Component: Designator=R?(FP-CF14-MFG)
+Added Component: Designator=R?(FP-CF14-MFG)
+Added Component: Designator=R?(FP-CF14-MFG)
+Added Component: Designator=R?(FP-CF14-MFG)
+Added Component: Designator=R?(FP-CF14-MFG)
+Added Component: Designator=R?(FP-CF14-MFG)
+Added Component: Designator=R?(FP-CF14-MFG)
+Added Component: Designator=R?(FP-CF14-MFG)
+Added Component: Designator=R?(FP-CF14-MFG)
+Added Component: Designator=R?(FP-CF14-MFG)
+Added Component: Designator=R?(FP-CF14-MFG)
+Added Component: Designator=R?(FP-CF14-MFG)
+Added Component: Designator=R?(FP-CF14-MFG)
+Added Component: Designator=U14(FP-AMS1117-IPC_C)
+Added Component: Designator=U?(VISH-DIP-8_A)
+Added Component: Designator=U?(VISH-DIP-8_A)
+Added Component: Designator=U?(VISH-DIP-8_A)
+Added Component: Designator=U?(VISH-DIP-8_A)
+Add Pin To Net: Unknown Pin: Pin D?-2
+Add Pin To Net: Unknown Pin: Pin D?-2
+Add Pin To Net: Unknown Pin: Pin D?-2
+Add Pin To Net: Unknown Pin: Pin D?-2
+Add Pin To Net: Unknown Pin: Pin D?-2
+Add Pin To Net: Unknown Pin: Pin D?-2
+Add Pin To Net: Unknown Pin: Pin K?-1
+Add Pin To Net: Unknown Pin: Pin K?-1
+Add Pin To Net: Unknown Pin: Pin K?-1
+Add Pin To Net: Unknown Pin: Pin K?-1
+Add Pin To Net: Unknown Pin: Pin K?-1
+Add Pin To Net: Unknown Pin: Pin K?-1
+Add Pin To Net: Unknown Pin: Pin K?-3
+Add Pin To Net: Unknown Pin: Pin K?-3
+Add Pin To Net: Unknown Pin: Pin K?-3
+Add Pin To Net: Unknown Pin: Pin K?-3
+Add Pin To Net: Unknown Pin: Pin K?-3
+Add Pin To Net: Unknown Pin: Pin K?-3
+Add Pin To Net: Unknown Pin: Pin K?-4
+Add Pin To Net: Unknown Pin: Pin K?-4
+Add Pin To Net: Unknown Pin: Pin K?-4
+Add Pin To Net: Unknown Pin: Pin K?-4
+Add Pin To Net: Unknown Pin: Pin K?-4
+Add Pin To Net: Unknown Pin: Pin K?-4
+Added Pin To Net: NetName=GND Pin=MD1-1
+Added Pin To Net: NetName=GND Pin=MD1-15
+Added Pin To Net: NetName=GND Pin=MD1-38
+Added Pin To Net: NetName=GND Pin=MD1-39
+Added Pin To Net: NetName=GND Pin=MD1-39
+Added Pin To Net: NetName=GND Pin=MD1-39
+Added Pin To Net: NetName=GND Pin=MD1-39
+Added Pin To Net: NetName=GND Pin=MD1-39
+Added Pin To Net: NetName=GND Pin=MD1-39
+Added Pin To Net: NetName=GND Pin=MD1-39
+Added Pin To Net: NetName=GND Pin=MD1-39
+Added Pin To Net: NetName=GND Pin=MD1-39
+Add Pin To Net: Unknown Pin: Pin Q?-1
+Add Pin To Net: Unknown Pin: Pin Q?-1
+Add Pin To Net: Unknown Pin: Pin Q?-1
+Add Pin To Net: Unknown Pin: Pin Q?-1
+Add Pin To Net: Unknown Pin: Pin Q?-1
+Add Pin To Net: Unknown Pin: Pin Q?-1
+Add Pin To Net: Unknown Pin: Pin Q?-2
+Add Pin To Net: Unknown Pin: Pin Q?-2
+Add Pin To Net: Unknown Pin: Pin Q?-2
+Add Pin To Net: Unknown Pin: Pin Q?-2
+Add Pin To Net: Unknown Pin: Pin Q?-2
+Add Pin To Net: Unknown Pin: Pin Q?-2
+Add Pin To Net: Unknown Pin: Pin Q?-2
+Add Pin To Net: Unknown Pin: Pin Q?-2
+Add Pin To Net: Unknown Pin: Pin Q?-2
+Add Pin To Net: Unknown Pin: Pin Q?-2
+Add Pin To Net: Unknown Pin: Pin Q?-2
+Add Pin To Net: Unknown Pin: Pin Q?-2
+Add Pin To Net: Unknown Pin: Pin Q?-3
+Add Pin To Net: Unknown Pin: Pin Q?-3
+Add Pin To Net: Unknown Pin: Pin Q?-3
+Add Pin To Net: Unknown Pin: Pin Q?-3
+Add Pin To Net: Unknown Pin: Pin Q?-3
+Add Pin To Net: Unknown Pin: Pin Q?-3
+Add Pin To Net: Unknown Pin: Pin R?-2
+Add Pin To Net: Unknown Pin: Pin R?-2
+Add Pin To Net: Unknown Pin: Pin U14-1
+Added Pin To Net: NetName=+5 Pin=U-1
+Add Pin To Net: Unknown Pin: Pin U?-3
+Add Pin To Net: Unknown Pin: Pin U?-3
+Add Pin To Net: Unknown Pin: Pin U?-3
+Add Pin To Net: Unknown Pin: Pin U?-3
+Add Pin To Net: Unknown Pin: Pin U?-5
+Add Pin To Net: Unknown Pin: Pin U?-5
+Add Pin To Net: Unknown Pin: Pin U?-5
+Add Pin To Net: Unknown Pin: Pin U?-5
+Change Net Name : Old Net Name=+5 New Net Name=+3.3
+Added Pin To Net: NetName=+5 Pin=J1-1
+Added Pin To Net: NetName=+5 Pin=U-19
+Added Pin To Net: NetName=+5 Pin=U2-4
+Added Pin To Net: NetName=+5 Pin=U6-8
+Added Pin To Net: NetName=+5 Pin=U7-8
+Added Net: Name=+5
+Added Pin To Net: NetName=NetD?_1 Pin=R15-1
+Added Net: Name=NetD?_1
+Add Net: Net with name "NetD?_1" already exists
+Add Net: Net with name "NetD?_1" already exists
+Add Net: Net with name "NetD?_1" already exists
+Add Net: Net with name "NetD?_1" already exists
+Add Net: Net with name "NetD?_1" already exists
+Added Net: Name=NetD?_2
+Add Net: Net with name "NetD?_2" already exists
+Add Net: Net with name "NetD?_2" already exists
+Add Net: Net with name "NetD?_2" already exists
+Add Net: Net with name "NetD?_2" already exists
+Add Net: Net with name "NetD?_2" already exists
+Added Pin To Net: NetName=NetJ6_1 Pin=J6-1
+Added Pin To Net: NetName=NetJ6_1 Pin=U7-6
+Added Net: Name=NetJ6_1
+Added Pin To Net: NetName=NetJ6_2 Pin=J6-2
+Added Net: Name=NetJ6_2
+Added Net: Name=NetJ?_1
+Added Net: Name=NetJ?_2
+Added Pin To Net: NetName=NetJ?_3 Pin=U-36
+Added Pin To Net: NetName=NetJ?_3 Pin=U2-2
+Added Net: Name=NetJ?_3
+Added Pin To Net: NetName=NetJ?_4 Pin=U-33
+Added Pin To Net: NetName=NetJ?_4 Pin=U2-3
+Added Net: Name=NetJ?_4
+Added Pin To Net: NetName=NetMD1_2 Pin=MD1-2
+Added Net: Name=NetMD1_2
+Added Net: Name=NetQ?_1
+Add Net: Net with name "NetQ?_1" already exists
+Add Net: Net with name "NetQ?_1" already exists
+Add Net: Net with name "NetQ?_1" already exists
+Add Net: Net with name "NetQ?_1" already exists
+Add Net: Net with name "NetQ?_1" already exists
+Added Net: Name=NetQ?_2
+Add Net: Net with name "NetQ?_2" already exists
+Add Net: Net with name "NetQ?_2" already exists
+Add Net: Net with name "NetQ?_2" already exists
+Add Net: Net with name "NetQ?_2" already exists
+Add Net: Net with name "NetQ?_2" already exists
+Add Net: Net with name "NetQ?_2" already exists
+Added Net: Name=NetQ?_3
+Add Net: Net with name "NetQ?_3" already exists
+Add Net: Net with name "NetQ?_3" already exists
+Add Net: Net with name "NetQ?_3" already exists
+Add Net: Net with name "NetQ?_3" already exists
+Add Net: Net with name "NetQ?_3" already exists
+Added Pin To Net: NetName=NetQ?_4 Pin=R7-1
+Added Pin To Net: NetName=NetQ?_4 Pin=U-5
+Added Net: Name=NetQ?_4
+Add Net: Net with name "NetQ?_4" already exists
+Add Net: Net with name "NetQ?_4" already exists
+Add Net: Net with name "NetQ?_4" already exists
+Add Net: Net with name "NetQ?_4" already exists
+Add Net: Net with name "NetQ?_4" already exists
+Added Net: Name=NetR?_1
+Add Net: Net with name "NetR?_1" already exists
+Add Net: Net with name "NetR?_1" already exists
+Add Net: Net with name "NetR?_1" already exists
+Add Net: Net with name "NetR?_1" already exists
+Add Net: Net with name "NetR?_1" already exists
+Added Pin To Net: NetName=NetR?_2 Pin=U-31
+Added Net: Name=NetR?_2
+Add Net: Net with name "NetR?_2" already exists
+Add Net: Net with name "NetR?_2" already exists
+Add Net: Net with name "NetR?_2" already exists
+Add Net: Net with name "NetR?_2" already exists
+Add Net: Net with name "NetR?_2" already exists
+Add Net: Net with name "NetR?_2" already exists
+Add Net: Net with name "NetR?_2" already exists
+Added Pin To Net: NetName=NetU?_6 Pin=U-34
+Added Net: Name=NetU?_6
+Add Class Member: Failed to add class member : Component D? JANTX1N4626-1
+Add Class Member: Failed to add class member : Component D? JANTX1N4626-1
+Add Class Member: Failed to add class member : Component D? JANTX1N4626-1
+Add Class Member: Failed to add class member : Component D? JANTX1N4626-1
+Add Class Member: Failed to add class member : Component D? JANTX1N4626-1
+Add Class Member: Failed to add class member : Component D? JANTX1N4626-1
+Add Class Member: Failed to add class member : Component D? 1N4007
+Add Class Member: Failed to add class member : Component D? 1N4007
+Add Class Member: Failed to add class member : Component D? 1N4007
+Add Class Member: Failed to add class member : Component D? 1N4007
+Add Class Member: Failed to add class member : Component D? 1N4007
+Add Class Member: Failed to add class member : Component D? 1N4007
+Add Class Member: Failed to add class member : Component J? 1803293
+Add Class Member: Failed to add class member : Component K? JS1-B-5V-F
+Add Class Member: Failed to add class member : Component K? JS1-B-5V-F
+Add Class Member: Failed to add class member : Component K? JS1-B-5V-F
+Add Class Member: Failed to add class member : Component K? JS1-B-5V-F
+Add Class Member: Failed to add class member : Component K? JS1-B-5V-F
+Add Class Member: Failed to add class member : Component K? JS1-B-5V-F
+Add Class Member: Failed to add class member : Component Q? PC817X1J000F
+Add Class Member: Failed to add class member : Component Q? PC817X1J000F
+Add Class Member: Failed to add class member : Component Q? PC817X1J000F
+Add Class Member: Failed to add class member : Component Q? PC817X1J000F
+Add Class Member: Failed to add class member : Component Q? PC817X1J000F
+Add Class Member: Failed to add class member : Component Q? PC817X1J000F
+Add Class Member: Failed to add class member : Component Q? KSC945YTA
+Add Class Member: Failed to add class member : Component Q? PC817X1J000F
+Add Class Member: Failed to add class member : Component Q? KSC945YTA
+Add Class Member: Failed to add class member : Component Q? KSC945YTA
+Add Class Member: Failed to add class member : Component Q? KSC945YTA
+Add Class Member: Failed to add class member : Component Q? PC817X1J000F
+Add Class Member: Failed to add class member : Component Q? PC817X1J000F
+Add Class Member: Failed to add class member : Component Q? KSC945YTA
+Add Class Member: Failed to add class member : Component Q? PC817X1J000F
+Add Class Member: Failed to add class member : Component Q? KSC945YTA
+Add Class Member: Failed to add class member : Component Q? KSC945YTA
+Add Class Member: Failed to add class member : Component Q? PC817X1J000F
+Add Class Member: Failed to add class member : Component Q? PC817X1J000F
+Add Class Member: Failed to add class member : Component R? PCF14JT7K50
+Add Class Member: Failed to add class member : Component R? PCF14JT7K50
+Add Class Member: Failed to add class member : Component R? PCF14JT7K50
+Add Class Member: Failed to add class member : Component R? PCF14JT7K50
+Add Class Member: Failed to add class member : Component R? PCF14JT7K50
+Add Class Member: Failed to add class member : Component R? PCF14JT7K50
+Add Class Member: Failed to add class member : Component R? PCF14JT7K50
+Add Class Member: Failed to add class member : Component R? PCF14JT7K50
+Add Class Member: Failed to add class member : Component R? PCF14JT7K50
+Add Class Member: Failed to add class member : Component R? PCF14JT7K50
+Add Class Member: Failed to add class member : Component R? PCF14JT7K50
+Add Class Member: Failed to add class member : Component R? PCF14JT7K50
+Add Class Member: Failed to add class member : Component R? PCF14JT7K50
+Add Class Member: Failed to add class member : Component R? PCF14JT7K50
+Add Class Member: Failed to add class member : Component R? PCF14JT7K50
+Add Class Member: Failed to add class member : Component R? PCF14JT7K50
+Add Class Member: Failed to add class member : Component R? PCF14JT7K50
+Add Class Member: Failed to add class member : Component R? PCF14JT7K50
+Add Class Member: Failed to add class member : Component R? PCF14JT7K50
+Add Class Member: Failed to add class member : Component U14 AMS1117-3.3
+Add Class Member: Failed to add class member : Component U? 6N137
+Add Class Member: Failed to add class member : Component U? 6N137
+Add Class Member: Failed to add class member : Component U? 6N137
+Add Class Member: Failed to add class member : Component U? 6N137
+Added Rule: Name=Schematic Supply Nets_3

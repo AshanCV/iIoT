@@ -1,0 +1,30 @@
+Added Component: Designator=R13(FP-CF14-MFG)
+Added Component: Designator=R14(FP-CF14-MFG)
+Added Component: Designator=R15(FP-CF14-MFG)
+Added Component: Designator=R16(FP-CF14-MFG)
+Added Component: Designator=R17(FP-CF14-MFG)
+Added Component: Designator=R18(FP-CF14-MFG)
+Add Pin To Net: Unknown Pin: Pin R13-2
+Add Pin To Net: Unknown Pin: Pin R14-2
+Add Pin To Net: Unknown Pin: Pin R15-2
+Add Pin To Net: Unknown Pin: Pin R16-2
+Add Pin To Net: Unknown Pin: Pin R17-2
+Add Pin To Net: Unknown Pin: Pin R18-2
+Added Pin To Net: NetName=NetR13_1 Pin=U8-2
+Added Net: Name=NetR13_1
+Added Pin To Net: NetName=NetR14_1 Pin=U9-2
+Added Net: Name=NetR14_1
+Added Pin To Net: NetName=NetR15_1 Pin=U10-2
+Added Net: Name=NetR15_1
+Added Pin To Net: NetName=NetR16_1 Pin=U11-2
+Added Net: Name=NetR16_1
+Added Pin To Net: NetName=NetR17_1 Pin=U12-2
+Added Net: Name=NetR17_1
+Added Pin To Net: NetName=NetR18_1 Pin=U13-2
+Added Net: Name=NetR18_1
+Add Class Member: Failed to add class member : Component R13 PCF14JT7K50
+Add Class Member: Failed to add class member : Component R14 PCF14JT7K50
+Add Class Member: Failed to add class member : Component R15 PCF14JT7K50
+Add Class Member: Failed to add class member : Component R16 PCF14JT7K50
+Add Class Member: Failed to add class member : Component R17 PCF14JT7K50
+Add Class Member: Failed to add class member : Component R18 PCF14JT7K50

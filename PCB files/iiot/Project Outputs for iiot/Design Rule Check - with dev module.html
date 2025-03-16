@@ -1,0 +1,876 @@
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<style type="text/css">
+		h1, h2, h3, h4, h5, h6 {
+			font-family : segoe ui;
+			color : black;
+			background-color : #EDE7D9;
+			padding: 0.3em;
+		}
+
+		h1 {
+			font-size: 1.2em;
+		}		
+
+		h2 {
+			font-size: 1.2em;
+		}
+
+		body {
+			font-family : segoe ui;
+		}
+
+		td, th {
+			padding: 0.5em;
+			text-align : left;
+			width: 10em;
+		}
+		th {
+			background-color : #EEEEEE;
+
+		}
+		th.column1, td.column1 {
+			text-align: left;
+			width : auto;
+		}
+		table {
+			width : 100%;
+			font-size: 0.9em;
+		}
+
+		.DRC_summary_header {
+			padding-bottom : 0.1em;
+			border : 0px solid black;
+			width: 100%;
+			align: left;
+		}
+
+		.DRC_summary_header_col1,
+		.DRC_summary_header_col2, 
+		.DRC_summary_header_col3 {
+			color : black;
+			font-size:100%;
+			padding : 0em;
+			padding-top : 0.2em;
+			padding-bottom 0.2em;
+			border : 0px solid black;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.DRC_summary_header_col1 {
+			font-weight: bold;
+			width: 9em;
+		}
+
+		.DRC_summary_header_col2 {
+			width: 0.1em;
+		
+		}
+
+		.DRC_summary_header_col3 {
+			width : auto;
+		}
+
+		.header_holder {
+		    Width = 100%;
+		    border = 0px solid green;
+		    padding = 0;
+		}
+
+
+		.front_matter, .front_matter_column1, .front_matter_column2, .front_matter_column3
+		{
+			left : 0;
+			top : 0;
+			padding: 0em;
+			padding-top : 0.1em;
+			border : 0px solid black;
+			width : 100%;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.front_matter_column1 {
+			width : 8em;
+			font-weight: bold;
+		}
+
+		.front_matter_column2 {
+			width: 0.1em;
+		}
+
+		.front_matter_column3 {
+			width : auto;
+		}
+
+		.total_column1, .total_column {
+			font-weight : bold;
+		}
+		.total_column1 {
+			text-align : left;
+		}
+		.warning, .error {
+			color : red;
+			font-weight : bold;
+		}
+		tr.onmouseout_odd {
+			background-color : #white;
+		}
+		tr.onmouseout_even { 
+			background-color : #FAFAFA;
+		}
+		tr.onmouseover_odd, tr.onmouseover_even { 
+			background-color : #EEEEEE;
+		} 
+		a:link, a:visited, .q a:link,.q a:active,.q {
+			color: #21489e; 
+		}
+		a:link.callback, a:visited.callback { 
+			color: #21489e;
+		}
+		a:link.customize, a:visited.customize {
+			color: #C0C0C0;
+			position: absolute; 
+			right: 10px;
+		}	
+		p.contents_level1 {
+			font-weight : bold;
+			font-size : 110%;
+			margin : 0.5em;
+		}
+		p.contents_level2 {
+			position : relative;
+			left : 20px;
+			margin : 0.5em;
+		}
+	</style><script type="text/javascript">
+		function coordToMils(coord) {
+			var number = coord / 10000;
+			
+			if (number != number.toFixed(3))
+				number = number.toFixed(3);
+
+			return number + 'mil'
+		}
+
+		function coordToMM(coord) {
+			var number = 0.0254 * coord / 10000;
+			
+			if (number != number.toFixed(4))
+				number = number.toFixed(4);
+			
+			return number + 'mm'
+		}
+	
+		function convertCoord(coordNode, units) {
+			for (var i = 0; i < coordNode.childNodes.length; i++) {
+				coordNode.removeChild(coordNode.childNodes[i]);
+			}
+
+			var coord = coordNode.getAttribute('value');
+			if (coord != null) {
+				if (units == 'mm') {
+					textNode = document.createTextNode(coordToMM(coord));
+					coordNode.appendChild(textNode);
+				} else if (units == 'mil') {
+					textNode = document.createTextNode(coordToMils(coord));		
+					coordNode.appendChild(textNode);	
+				}
+			}
+		}
+	
+		function convertUnits(unitNode, units) {
+			for (var i = 0; i < unitNode.childNodes.length; i++) {
+				unitNode.removeChild(unitNode.childNodes[i]);		
+			}
+		
+			textNode = document.createTextNode(units); 
+			unitNode.appendChild(textNode);
+		}
+	
+		function changeUnits(radio_input, units) {
+			if (radio_input.checked) {
+			
+				var elements = document.getElementsByName('coordinate');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertCoord(elements[i], units);
+					}
+				}
+	
+				var elements = document.getElementsByName('units');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertUnits(elements[i], units);
+					}
+				}
+			}
+		}
+	</script><title>Design Rule Verification Report</title>
+</head>
+<body onload=""><img ALT="Altium" src="
+			file://C:\Users\Public\Documents\Altium\AD24\Templates\AD_logo.png
+		"><h1>Design Rule Verification Report</h1>
+<table class="header_holder">
+<td class="column1">
+<table class="front_matter">
+<tr class="front_matter">
+<td class="front_matter_column1">Date:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">2/26/2025</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">6:58:53 PM</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Elapsed Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">00:00:02</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Filename:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3"><a href="file:///C:\Users\dell\Documents\iiot\with dev module.PcbDoc" class="file"><acronym title="C:\Users\dell\Documents\iiot\with dev module.PcbDoc">C:\Users\dell\Documents\iiot\with dev module.PcbDoc</acronym></a></td>
+</tr>
+</table>
+</td>
+<td class="column2">
+<table class="DRC_summary_header">
+<tr>
+<td class="DRC_summary_header_col1">Warnings:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3">0</td></tr>
+<tr>
+<td class="DRC_summary_header_col1">Rule Violations:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3" style="color : red">180</td></tr>
+</table>
+</td>
+</table><a name="IDQI0YPGWGWO4RFPISQ4PILPJTLPQLCUKWYSCKG4FEPAPQNSL52U3N"><h2>Summary</h2></a><table>
+<tr>
+<th class="column1">Warnings</th>
+<th class="column2">Count</th>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">0</td>
+</tr>
+</table><br><table>
+<tr>
+<th class="column1">Rule Violations</th>
+<th class="column2">Count</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDO5P15MSZLKPWG4HPLERXDJXWGNEBQIVUZ0LZDPNNSL2V3FGF043">Clearance Constraint (Gap=20mil) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDGGN335OGFORVETO0NMYPSOG14PH5GHPS11CUM3DRMPCHIYYQVPUO">Short-Circuit Constraint (Allowed=No) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDCQRTQTBILHJEN3BD32IESNAVJELPCYYWZPJ1SZJQG5B5F3ZKFEPP">Un-Routed Net Constraint ( (All) )</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#ID4NFLVXPIU5LJMIACRHD24F34CMCT3NSTT4ECIFGJQD3P3VAH41TP">Modified Polygon (Allow modified: No), (Allow shelved: No)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDBR1VGBUZQQ20G1WGL1ZY1ORN4KZBJ0BE0NSSQQC0RCLUV2EJXCOP">Width Constraint (Min=10mil) (Max=40mil) (Preferred=30mil) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDU2LJIRAPZ0XQ4HVWSNP0BTDTBCPEZX45YTZVEHL5HVYT5AOHGGP">Routing Topology Rule(Topology=Shortest) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDS5YZJR3OHQI0IEQX3JZTQHP4ANVXHTJTLGO5QSBHNVQFX0TMRGCD">Power Plane Connect Rule(Relief Connect )(Expansion=20mil) (Conductor Width=10mil) (Air Gap=10mil) (Entries=4) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDVMGHNVPUHH1ZJGDI3TNCY2CABEF5H04RNXRU1EBKHRKF0U3Q3MTE">Hole Size Constraint (Min=1mil) (Max=100mil) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDKXXZK21HRN15D212V2OHOVBTIMJL53WEKWZWGQCOPOTMKRVY44TK">Hole To Hole Clearance (Gap=10mil) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDLUUXRQ5RUTHNJSS21DTZCZSOHJYT53CUOPM3FZJ1QPG015IPHMZD">Minimum Solder Mask Sliver (Gap=10mil) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDDJHGRQDXXZBSJEUUE2DJQBNVHJHLXGIHRX3PCHG5IO3VAZZYCUEJ">Silk To Solder Mask (Clearance=10mil) (IsPad),(All)</a></td>
+<td class="column2">44</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDSOT44CE44OQUFXG0HEWWD1WIHMZRW0J5ZY0TELPNGWOQ5GAMASKK">Silk to Silk (Clearance=10mil) (All),(All)</a></td>
+<td class="column2">136</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDOV1BCIFUK5VSDCTUOJPBAE2OVKX0H1SDHOFBYINWS2LX5BLNBTUI">Net Antennae (Tolerance=0mil) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#ID5PJMF5A1GA1EFQ0HDFPBLS3DPHYKO0I5Y2M4PFMRDB1XBMZWLNAB">Height Constraint (Min=0mil) (Max=1000mil) (Prefered=500mil) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">180</td>
+</tr>
+</table><br><a name="IDDJHGRQDXXZBSJEUUE2DJQBNVHJHLXGIHRX3PCHG5IO3VAZZYCUEJ"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Silk To Solder Mask (Clearance=10mil) (IsPad),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6422.667mil|Location2.X=6430.333mil|Location1.Y=2220.657mil|Location2.Y=2228.324mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6422.667mil|Location2.X=6430.333mil|Location1.Y=2220.657mil|Location2.Y=2228.324mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 10mil) Between Pad Free-25(6475mil,2255mil) on Multi-Layer And Text "R20" (6426.5mil,2224.49mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5568.78mil|Location2.X=5580.03mil|Location1.Y=481.828mil|Location2.Y=493.078mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5568.78mil|Location2.X=5580.03mil|Location1.Y=481.828mil|Location2.Y=493.078mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (8.963mil &lt; 10mil) Between Pad P6-1(5530mil,530mil) on Multi-Layer And Text "P5" (5641.5mil,381.217mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [8.963mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3628.78mil|Location2.X=3640.03mil|Location1.Y=476.828mil|Location2.Y=488.078mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3628.78mil|Location2.X=3640.03mil|Location1.Y=476.828mil|Location2.Y=488.078mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (8.963mil &lt; 10mil) Between Pad P8-1(3590mil,525mil) on Multi-Layer And Text "P7" (3701.5mil,376.217mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [8.963mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5340.95mil|Location2.X=5352.2mil|Location1.Y=1925.417mil|Location2.Y=1936.667mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5340.95mil|Location2.X=5352.2mil|Location1.Y=1925.417mil|Location2.Y=1936.667mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (8.935mil &lt; 10mil) Between Pad Q10-1(5320mil,1900mil) on Multi-Layer And Text "R26" (5363.5mil,1940.51mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [8.935mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5322.683mil|Location2.X=5330.35mil|Location1.Y=3303.654mil|Location2.Y=3311.32mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5322.683mil|Location2.X=5330.35mil|Location1.Y=3303.654mil|Location2.Y=3311.32mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 10mil) Between Pad Q11-3(5325mil,3322.362mil) on Multi-Layer And Text "D5" (5376.5mil,3267.5mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5779.038mil|Location2.X=5790.288mil|Location1.Y=1732.712mil|Location2.Y=1743.962mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5779.038mil|Location2.X=5790.288mil|Location1.Y=1732.712mil|Location2.Y=1743.962mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (1.911mil &lt; 10mil) Between Pad Q12-2(5790mil,1767.362mil) on Multi-Layer And Text "D6" (5723.5mil,1732.5mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [1.911mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5769.65mil|Location2.X=5777.317mil|Location1.Y=1688.68mil|Location2.Y=1696.346mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5769.65mil|Location2.X=5777.317mil|Location1.Y=1688.68mil|Location2.Y=1696.346mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 10mil) Between Pad Q12-3(5790mil,1665mil) on Multi-Layer And Text "D6" (5723.5mil,1732.5mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5135.832mil|Location2.X=5147.082mil|Location1.Y=717.092mil|Location2.Y=728.342mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5135.832mil|Location2.X=5147.082mil|Location1.Y=717.092mil|Location2.Y=728.342mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (7.48mil &lt; 10mil) Between Pad Q13-1(5170mil,755mil) on Multi-Layer And Track (4790.63mil,715.04mil)(5669.37mil,715.04mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [7.48mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3827.86mil|Location2.X=3835.527mil|Location1.Y=1259.654mil|Location2.Y=1267.32mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3827.86mil|Location2.X=3835.527mil|Location1.Y=1259.654mil|Location2.Y=1267.32mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 10mil) Between Pad Q19-2(3815mil,1260mil) on Multi-Layer And Text "U4" (3878.5mil,1223.5mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3823.651mil|Location2.X=3831.317mil|Location1.Y=3879.792mil|Location2.Y=3887.459mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3823.651mil|Location2.X=3831.317mil|Location1.Y=3879.792mil|Location2.Y=3887.459mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 10mil) Between Pad Q3-3(3842.362mil,3905mil) on Multi-Layer And Text "D1" (3787.497mil,3843.5mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5987.541mil|Location2.X=5995.208mil|Location1.Y=3293.654mil|Location2.Y=3301.32mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5987.541mil|Location2.X=5995.208mil|Location1.Y=3293.654mil|Location2.Y=3301.32mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 10mil) Between Pad Q4-3(5970mil,3312.362mil) on Multi-Layer And Text "D2" (6036.5mil,3257.5mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5990.95mil|Location2.X=6002.2mil|Location1.Y=1935.417mil|Location2.Y=1946.667mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5990.95mil|Location2.X=6002.2mil|Location1.Y=1935.417mil|Location2.Y=1946.667mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (8.935mil &lt; 10mil) Between Pad Q6-1(5970mil,1910mil) on Multi-Layer And Text "R22" (6018.5mil,1950.51mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [8.935mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4658.069mil|Location2.X=4669.319mil|Location1.Y=3246.072mil|Location2.Y=3257.322mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4658.069mil|Location2.X=4669.319mil|Location1.Y=3246.072mil|Location2.Y=3257.322mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (2.909mil &lt; 10mil) Between Pad Q7-2(4650mil,3225mil) on Multi-Layer And Text "D3" (4726.5mil,3257.5mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [2.909mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4672.683mil|Location2.X=4680.35mil|Location1.Y=3313.647mil|Location2.Y=3321.314mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4672.683mil|Location2.X=4680.35mil|Location1.Y=3313.647mil|Location2.Y=3321.314mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 10mil) Between Pad Q7-3(4650mil,3327.362mil) on Multi-Layer And Text "D3" (4726.5mil,3257.5mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6439.647mil|Location2.X=6447.314mil|Location1.Y=1733.667mil|Location2.Y=1741.333mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6439.647mil|Location2.X=6447.314mil|Location1.Y=1733.667mil|Location2.Y=1741.333mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 10mil) Between Pad Q8-2(6450.04mil,1770mil) on Multi-Layer And Text "D4" (6383.5mil,1737.5mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6422.705mil|Location2.X=6430.372mil|Location1.Y=1643.696mil|Location2.Y=1651.362mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6422.705mil|Location2.X=6430.372mil|Location1.Y=1643.696mil|Location2.Y=1651.362mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 10mil) Between Pad Q8-3(6450.04mil,1667.638mil) on Multi-Layer And Text "D4" (6383.5mil,1737.5mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5762.8mil|Location2.X=5774.05mil|Location1.Y=3063.333mil|Location2.Y=3074.583mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5762.8mil|Location2.X=5774.05mil|Location1.Y=3063.333mil|Location2.Y=3074.583mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (8.935mil &lt; 10mil) Between Pad Q9-1(5795mil,3100mil) on Multi-Layer And Text "R25" (5761.5mil,3059.49mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [8.935mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3453.764mil|Location2.X=3461.431mil|Location1.Y=1780.735mil|Location2.Y=1788.402mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3453.764mil|Location2.X=3461.431mil|Location1.Y=1780.735mil|Location2.Y=1788.402mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 10mil) Between Pad R10-1(3483.188mil,1795mil) on Multi-Layer And Text "R12" (3508.5mil,1745.5mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3542.388mil|Location2.X=3550.055mil|Location1.Y=1679.399mil|Location2.Y=1687.066mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3542.388mil|Location2.X=3550.055mil|Location1.Y=1679.399mil|Location2.Y=1687.066mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 10mil) Between Pad R11-1(3571.812mil,1675mil) on Multi-Layer And Text "Q18" (3427.508mil,1624.5mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3593.569mil|Location2.X=3601.236mil|Location1.Y=1678.41mil|Location2.Y=1686.077mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3593.569mil|Location2.X=3601.236mil|Location1.Y=1678.41mil|Location2.Y=1686.077mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 10mil) Between Pad R11-1(3571.812mil,1675mil) on Multi-Layer And Text "R9" (3544.688mil,1719.5mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5972.888mil|Location2.X=5984.138mil|Location1.Y=2111.809mil|Location2.Y=2123.059mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5972.888mil|Location2.X=5984.138mil|Location1.Y=2111.809mil|Location2.Y=2123.059mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (3.952mil &lt; 10mil) Between Pad R20-1(5986.812mil,2145mil) on Multi-Layer And Text "R22" (6018.5mil,1950.51mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [3.952mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4620.596mil|Location2.X=4631.846mil|Location1.Y=2985.43mil|Location2.Y=2996.68mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4620.596mil|Location2.X=4631.846mil|Location1.Y=2985.43mil|Location2.Y=2996.68mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.929mil &lt; 10mil) Between Pad R21-1(4651.812mil,2965mil) on Multi-Layer And Text "Q7" (4715.539mil,3056.5mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.929mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6448.852mil|Location2.X=6460.102mil|Location1.Y=1998.32mil|Location2.Y=2009.57mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6448.852mil|Location2.X=6460.102mil|Location1.Y=1998.32mil|Location2.Y=2009.57mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.929mil &lt; 10mil) Between Pad R22-1(6458.19mil,2030mil) on Multi-Layer And Text "Q8" (6384.5mil,1938.5mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.929mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6470.859mil|Location2.X=6482.109mil|Location1.Y=2051.941mil|Location2.Y=2063.191mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6470.859mil|Location2.X=6482.109mil|Location1.Y=2051.941mil|Location2.Y=2063.191mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (3.951mil &lt; 10mil) Between Pad R22-1(6458.19mil,2030mil) on Multi-Layer And Text "R20" (6426.5mil,2224.49mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [3.951mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5815.856mil|Location2.X=5827.106mil|Location1.Y=2886.941mil|Location2.Y=2898.191mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5815.856mil|Location2.X=5827.106mil|Location1.Y=2886.941mil|Location2.Y=2898.191mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (3.951mil &lt; 10mil) Between Pad R23-1(5798.19mil,2865mil) on Multi-Layer And Text "R25" (5761.5mil,3059.49mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [3.951mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5347.878mil|Location2.X=5359.128mil|Location1.Y=2104.309mil|Location2.Y=2115.559mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5347.878mil|Location2.X=5359.128mil|Location1.Y=2104.309mil|Location2.Y=2115.559mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (8.952mil &lt; 10mil) Between Pad R24-1(5331.812mil,2140mil) on Multi-Layer And Text "R26" (5363.5mil,1940.51mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [8.952mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5331.724mil|Location2.X=5339.391mil|Location1.Y=3001.757mil|Location2.Y=3009.424mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5331.724mil|Location2.X=5339.391mil|Location1.Y=3001.757mil|Location2.Y=3009.424mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 10mil) Between Pad R25-1(5321.812mil,2980mil) on Multi-Layer And Text "Q11" (5405.535mil,3051.5mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5302.891mil|Location2.X=5314.141mil|Location1.Y=2946.809mil|Location2.Y=2958.059mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5302.891mil|Location2.X=5314.141mil|Location1.Y=2946.809mil|Location2.Y=2958.059mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (3.952mil &lt; 10mil) Between Pad R25-1(5321.812mil,2980mil) on Multi-Layer And Text "R23" (5358.5mil,2785.51mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [3.952mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5824.947mil|Location2.X=5832.614mil|Location1.Y=1992.009mil|Location2.Y=1999.676mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5824.947mil|Location2.X=5832.614mil|Location1.Y=1992.009mil|Location2.Y=1999.676mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 10mil) Between Pad R26-1(5803.19mil,2020mil) on Multi-Layer And Text "Q12" (5699.468mil,1935.862mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5795.865mil|Location2.X=5807.115mil|Location1.Y=2044.441mil|Location2.Y=2055.691mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5795.865mil|Location2.X=5807.115mil|Location1.Y=2044.441mil|Location2.Y=2055.691mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (8.951mil &lt; 10mil) Between Pad R26-1(5803.19mil,2020mil) on Multi-Layer And Text "R24" (5771.5mil,2219.49mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [8.951mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3511.757mil|Location2.X=3519.424mil|Location1.Y=3901.534mil|Location2.Y=3909.2mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3511.757mil|Location2.X=3519.424mil|Location1.Y=3901.534mil|Location2.Y=3909.2mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 10mil) Between Pad R3-1(3490mil,3908.188mil) on Multi-Layer And Text "Q3" (3571.5mil,3839.461mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5991.72mil|Location2.X=5999.386mil|Location1.Y=2987.683mil|Location2.Y=2995.349mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5991.72mil|Location2.X=5999.386mil|Location1.Y=2987.683mil|Location2.Y=2995.349mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 10mil) Between Pad R4-1(5966.81mil,2965mil) on Multi-Layer And Text "Q4" (6035.54mil,3041.5mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4674.667mil|Location2.X=4682.333mil|Location1.Y=1205.564mil|Location2.Y=1213.231mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4674.667mil|Location2.X=4682.333mil|Location1.Y=1205.564mil|Location2.Y=1213.231mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 10mil) Between Pad R6-2(4676.81mil,1235mil) on Multi-Layer And Text "U7" (4678.5mil,1171.5mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2633.652mil|Location2.X=2641.319mil|Location1.Y=1655.545mil|Location2.Y=1663.212mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2633.652mil|Location2.X=2641.319mil|Location1.Y=1655.545mil|Location2.Y=1663.212mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 10mil) Between Pad R7-1(2641.812mil,1675mil) on Multi-Layer And Text "Q14" (2567.508mil,1624.5mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3033.662mil|Location2.X=3041.329mil|Location1.Y=1650.097mil|Location2.Y=1657.763mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3033.662mil|Location2.X=3041.329mil|Location1.Y=1650.097mil|Location2.Y=1657.763mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 10mil) Between Pad R7-2(3018.19mil,1675mil) on Multi-Layer And Text "Q16" (2997.508mil,1624.5mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2989.683mil|Location2.X=2997.349mil|Location1.Y=1781.654mil|Location2.Y=1789.32mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2989.683mil|Location2.X=2997.349mil|Location1.Y=1781.654mil|Location2.Y=1789.32mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 10mil) Between Pad R8-1(3023.188mil,1795mil) on Multi-Layer And Text "R10" (3043.5mil,1745.5mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3126.757mil|Location2.X=3134.424mil|Location1.Y=1672.213mil|Location2.Y=1679.879mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3126.757mil|Location2.X=3134.424mil|Location1.Y=1672.213mil|Location2.Y=1679.879mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 10mil) Between Pad R9-1(3105mil,1670mil) on Multi-Layer And Text "Q16" (2997.508mil,1624.5mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3127.651mil|Location2.X=3135.317mil|Location1.Y=1680.68mil|Location2.Y=1688.346mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3127.651mil|Location2.X=3135.317mil|Location1.Y=1680.68mil|Location2.Y=1688.346mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 10mil) Between Pad R9-1(3105mil,1670mil) on Multi-Layer And Text "R7" (3081.5mil,1724.5mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3463.662mil|Location2.X=3471.329mil|Location1.Y=1648.063mil|Location2.Y=1655.73mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3463.662mil|Location2.X=3471.329mil|Location1.Y=1648.063mil|Location2.Y=1655.73mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 10mil) Between Pad R9-2(3481.378mil,1670mil) on Multi-Layer And Text "Q18" (3427.508mil,1624.5mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2442.68mil|Location2.X=2450.346mil|Location1.Y=1119.67mil|Location2.Y=1127.336mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2442.68mil|Location2.X=2450.346mil|Location1.Y=1119.67mil|Location2.Y=1127.336mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 10mil) Between Pad U1-8(2450mil,1095mil) on Multi-Layer And Text "U3" (2486.5mil,1133.5mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2117.387mil|Location2.X=2128.637mil|Location1.Y=1316.555mil|Location2.Y=1327.805mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2117.387mil|Location2.X=2128.637mil|Location1.Y=1316.555mil|Location2.Y=1327.805mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (5.17mil &lt; 10mil) Between Pad U3-7(2155mil,1325mil) on Multi-Layer And Text "R28" (1955.51mil,1301.5mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [5.17mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2124.664mil|Location2.X=2132.33mil|Location1.Y=1219.383mil|Location2.Y=1227.05mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2124.664mil|Location2.X=2132.33mil|Location1.Y=1219.383mil|Location2.Y=1227.05mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 10mil) Between Pad U3-8(2155mil,1225mil) on Multi-Layer And Text "U1" (2128.497mil,1186.5mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4264.654mil|Location2.X=4272.32mil|Location1.Y=1221.671mil|Location2.Y=1229.338mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4264.654mil|Location2.X=4272.32mil|Location1.Y=1221.671mil|Location2.Y=1229.338mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 10mil) Between Pad U4-4(4270mil,1255mil) on Multi-Layer And Text "U5" (4228.5mil,1191.5mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5183.796mil|Location2.X=5191.462mil|Location1.Y=1529.805mil|Location2.Y=1537.472mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5183.796mil|Location2.X=5191.462mil|Location1.Y=1529.805mil|Location2.Y=1537.472mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 10mil) Between Pad U6-5(5180mil,1565mil) on Multi-Layer And Text "R27" (5100.51mil,1506.5mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mil]</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDSOT44CE44OQUFXG0HEWWD1WIHMZRW0J5ZY0TELPNGWOQ5GAMASKK"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Silk to Silk (Clearance=10mil) (All),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3783.664mil|Location2.X=3791.33mil|Location1.Y=3839.667mil|Location2.Y=3847.333mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3783.664mil|Location2.X=3791.33mil|Location1.Y=3839.667mil|Location2.Y=3847.333mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "D1" (3787.497mil,3843.5mil) on Top Overlay And Track (3637.638mil,3837.48mil)(3842.362mil,3837.48mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3843.644mil|Location2.X=3851.311mil|Location1.Y=3839.667mil|Location2.Y=3847.333mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3843.644mil|Location2.X=3851.311mil|Location1.Y=3839.667mil|Location2.Y=3847.333mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "D1" (3787.497mil,3843.5mil) on Top Overlay And Track (3842.362mil,3837.48mil)(3842.362mil,3861.692mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3270.667mil|Location2.X=3278.333mil|Location1.Y=656.686mil|Location2.Y=664.353mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3270.667mil|Location2.X=3278.333mil|Location1.Y=656.686mil|Location2.Y=664.353mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "D10" (3402.492mil,720.5mil) on Top Overlay And Text "R15" (3274.5mil,718.5mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3359.879mil|Location2.X=3367.546mil|Location1.Y=664.268mil|Location2.Y=671.934mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3359.879mil|Location2.X=3367.546mil|Location1.Y=664.268mil|Location2.Y=671.934mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "D10" (3402.492mil,720.5mil) on Top Overlay And Text "R16" (3494.5mil,718.5mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3398.659mil|Location2.X=3406.325mil|Location1.Y=706.207mil|Location2.Y=713.873mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3398.659mil|Location2.X=3406.325mil|Location1.Y=706.207mil|Location2.Y=713.873mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "D10" (3402.492mil,720.5mil) on Top Overlay And Track (2850.63mil,710.04mil)(3729.37mil,710.04mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3635.702mil|Location2.X=3643.369mil|Location1.Y=654.686mil|Location2.Y=662.353mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3635.702mil|Location2.X=3643.369mil|Location1.Y=654.686mil|Location2.Y=662.353mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "D11" (3647.495mil,720.5mil) on Top Overlay And Text "R17" (3749.5mil,718.5mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3643.662mil|Location2.X=3651.328mil|Location1.Y=706.207mil|Location2.Y=713.873mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3643.662mil|Location2.X=3651.328mil|Location1.Y=706.207mil|Location2.Y=713.873mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "D11" (3647.495mil,720.5mil) on Top Overlay And Track (2850.63mil,710.04mil)(3729.37mil,710.04mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3745.667mil|Location2.X=3753.333mil|Location1.Y=714.667mil|Location2.Y=722.333mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3745.667mil|Location2.X=3753.333mil|Location1.Y=714.667mil|Location2.Y=722.333mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "D12" (3877.492mil,720.5mil) on Top Overlay And Text "R17" (3749.5mil,718.5mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3846.593mil|Location2.X=3854.26mil|Location1.Y=653.761mil|Location2.Y=661.428mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3846.593mil|Location2.X=3854.26mil|Location1.Y=653.761mil|Location2.Y=661.428mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "D12" (3877.492mil,720.5mil) on Top Overlay And Text "R18" (3969.5mil,716.688mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3721.915mil|Location2.X=3733.165mil|Location1.Y=709.114mil|Location2.Y=720.364mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3721.915mil|Location2.X=3733.165mil|Location1.Y=709.114mil|Location2.Y=720.364mil|Absolute=True">Silk To Silk Clearance Constraint: (1.523mil &lt; 10mil) Between Text "D12" (3877.492mil,720.5mil) on Top Overlay And Track (2850.63mil,710.04mil)(3729.37mil,710.04mil) on Top Overlay Silk Text to Silk Clearance [1.523mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3725.537mil|Location2.X=3733.203mil|Location1.Y=678.509mil|Location2.Y=686.176mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3725.537mil|Location2.X=3733.203mil|Location1.Y=678.509mil|Location2.Y=686.176mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "D12" (3877.492mil,720.5mil) on Top Overlay And Track (3729.37mil,375.39mil)(3729.37mil,710.04mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3736.797mil|Location2.X=3744.463mil|Location1.Y=689.769mil|Location2.Y=697.436mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3736.797mil|Location2.X=3744.463mil|Location1.Y=689.769mil|Location2.Y=697.436mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "D12" (3877.492mil,720.5mil) on Top Overlay And Track (3740.63mil,375.39mil)(3740.63mil,710.04mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3873.659mil|Location2.X=3881.325mil|Location1.Y=706.207mil|Location2.Y=713.873mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3873.659mil|Location2.X=3881.325mil|Location1.Y=706.207mil|Location2.Y=713.873mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "D12" (3877.492mil,720.5mil) on Top Overlay And Track (3740.63mil,710.04mil)(4619.37mil,710.04mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6032.667mil|Location2.X=6040.333mil|Location1.Y=3313.647mil|Location2.Y=3321.314mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6032.667mil|Location2.X=6040.333mil|Location1.Y=3313.647mil|Location2.Y=3321.314mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "D2" (6036.5mil,3257.5mil) on Top Overlay And Track (6013.308mil,3312.362mil)(6037.52mil,3312.362mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6032.667mil|Location2.X=6040.333mil|Location1.Y=3253.667mil|Location2.Y=3261.333mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6032.667mil|Location2.X=6040.333mil|Location1.Y=3253.667mil|Location2.Y=3261.333mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "D2" (6036.5mil,3257.5mil) on Top Overlay And Track (6037.52mil,3107.638mil)(6037.52mil,3312.362mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4718.119mil|Location2.X=4725.786mil|Location1.Y=3319.096mil|Location2.Y=3326.763mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4718.119mil|Location2.X=4725.786mil|Location1.Y=3319.096mil|Location2.Y=3326.763mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "D3" (4726.5mil,3257.5mil) on Top Overlay And Track (4693.308mil,3327.362mil)(4717.52mil,3327.362mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4713.687mil|Location2.X=4721.353mil|Location1.Y=3253.667mil|Location2.Y=3261.333mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4713.687mil|Location2.X=4721.353mil|Location1.Y=3253.667mil|Location2.Y=3261.333mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "D3" (4726.5mil,3257.5mil) on Top Overlay And Track (4717.52mil,3122.638mil)(4717.52mil,3327.362mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6379.667mil|Location2.X=6387.333mil|Location1.Y=1733.667mil|Location2.Y=1741.333mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6379.667mil|Location2.X=6387.333mil|Location1.Y=1733.667mil|Location2.Y=1741.333mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "D4" (6383.5mil,1737.5mil) on Top Overlay And Track (6382.52mil,1667.638mil)(6382.52mil,1872.362mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6409.657mil|Location2.X=6417.324mil|Location1.Y=1663.805mil|Location2.Y=1671.471mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6409.657mil|Location2.X=6417.324mil|Location1.Y=1663.805mil|Location2.Y=1671.471mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "D4" (6383.5mil,1737.5mil) on Top Overlay And Track (6382.52mil,1667.638mil)(6406.732mil,1667.638mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5310.894mil|Location2.X=5322.144mil|Location1.Y=3371.652mil|Location2.Y=3382.902mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5310.894mil|Location2.X=5322.144mil|Location1.Y=3371.652mil|Location2.Y=3382.902mil|Absolute=True">Silk To Silk Clearance Constraint: (9.619mil &lt; 10mil) Between Text "D5" (5376.5mil,3267.5mil) on Top Overlay And Track (5234.134mil,3386.024mil)(5875.866mil,3386.024mil) on Top Overlay Silk Text to Silk Clearance [9.619mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5362.67mil|Location2.X=5370.337mil|Location1.Y=3323.647mil|Location2.Y=3331.314mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5362.67mil|Location2.X=5370.337mil|Location1.Y=3323.647mil|Location2.Y=3331.314mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "D5" (5376.5mil,3267.5mil) on Top Overlay And Track (5368.308mil,3322.362mil)(5392.52mil,3322.362mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5379.417mil|Location2.X=5390.667mil|Location1.Y=3261.875mil|Location2.Y=3273.125mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5379.417mil|Location2.X=5390.667mil|Location1.Y=3261.875mil|Location2.Y=3273.125mil|Absolute=True">Silk To Silk Clearance Constraint: (7.083mil &lt; 10mil) Between Text "D5" (5376.5mil,3267.5mil) on Top Overlay And Track (5392.52mil,3117.638mil)(5392.52mil,3322.362mil) on Top Overlay Silk Text to Silk Clearance [7.083mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5719.667mil|Location2.X=5727.333mil|Location1.Y=1728.667mil|Location2.Y=1736.333mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5719.667mil|Location2.X=5727.333mil|Location1.Y=1728.667mil|Location2.Y=1736.333mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "D6" (5723.5mil,1732.5mil) on Top Overlay And Track (5722.48mil,1665mil)(5722.48mil,1869.724mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5729.663mil|Location2.X=5737.33mil|Location1.Y=1668.686mil|Location2.Y=1676.353mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5729.663mil|Location2.X=5737.33mil|Location1.Y=1668.686mil|Location2.Y=1676.353mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "D6" (5723.5mil,1732.5mil) on Top Overlay And Track (5722.48mil,1665mil)(5746.692mil,1665mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2715.686mil|Location2.X=2723.353mil|Location1.Y=659.667mil|Location2.Y=667.333mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2715.686mil|Location2.X=2723.353mil|Location1.Y=659.667mil|Location2.Y=667.333mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "D7" (2717.5mil,725.5mil) on Top Overlay And Text "R13" (2834.5mil,718.5mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2640.657mil|Location2.X=2648.324mil|Location1.Y=661.686mil|Location2.Y=669.353mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2640.657mil|Location2.X=2648.324mil|Location1.Y=661.686mil|Location2.Y=669.353mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "D7" (2717.5mil,725.5mil) on Top Overlay And Text "R29" (2644.49mil,713.5mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2713.667mil|Location2.X=2721.333mil|Location1.Y=706.207mil|Location2.Y=713.873mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2713.667mil|Location2.X=2721.333mil|Location1.Y=706.207mil|Location2.Y=713.873mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "D7" (2717.5mil,725.5mil) on Top Overlay And Track (1960.63mil,710.04mil)(2839.37mil,710.04mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2830.667mil|Location2.X=2838.333mil|Location1.Y=666.683mil|Location2.Y=674.35mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2830.667mil|Location2.X=2838.333mil|Location1.Y=666.683mil|Location2.Y=674.35mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "D8" (2937.5mil,720.5mil) on Top Overlay And Text "R13" (2834.5mil,718.5mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2910.712mil|Location2.X=2918.379mil|Location1.Y=714.667mil|Location2.Y=722.333mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2910.712mil|Location2.X=2918.379mil|Location1.Y=714.667mil|Location2.Y=722.333mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "D8" (2937.5mil,720.5mil) on Top Overlay And Text "R14" (3054.5mil,718.5mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2833.699mil|Location2.X=2841.366mil|Location1.Y=706.207mil|Location2.Y=713.873mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2833.699mil|Location2.X=2841.366mil|Location1.Y=706.207mil|Location2.Y=713.873mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "D8" (2937.5mil,720.5mil) on Top Overlay And Track (1960.63mil,710.04mil)(2839.37mil,710.04mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2843.696mil|Location2.X=2851.362mil|Location1.Y=656.686mil|Location2.Y=664.353mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2843.696mil|Location2.X=2851.362mil|Location1.Y=656.686mil|Location2.Y=664.353mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "D8" (2937.5mil,720.5mil) on Top Overlay And Track (2839.37mil,375.39mil)(2839.37mil,710.04mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2846.797mil|Location2.X=2854.463mil|Location1.Y=656.686mil|Location2.Y=664.353mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2846.797mil|Location2.X=2854.463mil|Location1.Y=656.686mil|Location2.Y=664.353mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "D8" (2937.5mil,720.5mil) on Top Overlay And Track (2850.63mil,375.39mil)(2850.63mil,710.04mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2933.667mil|Location2.X=2941.333mil|Location1.Y=706.207mil|Location2.Y=713.873mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2933.667mil|Location2.X=2941.333mil|Location1.Y=706.207mil|Location2.Y=713.873mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "D8" (2937.5mil,720.5mil) on Top Overlay And Track (2850.63mil,710.04mil)(3729.37mil,710.04mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3050.667mil|Location2.X=3058.333mil|Location1.Y=706.67mil|Location2.Y=714.337mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3050.667mil|Location2.X=3058.333mil|Location1.Y=706.67mil|Location2.Y=714.337mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "D9" (3157.5mil,720.5mil) on Top Overlay And Text "R14" (3054.5mil,718.5mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3153.667mil|Location2.X=3161.333mil|Location1.Y=654.686mil|Location2.Y=662.353mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3153.667mil|Location2.X=3161.333mil|Location1.Y=654.686mil|Location2.Y=662.353mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "D9" (3157.5mil,720.5mil) on Top Overlay And Text "R15" (3274.5mil,718.5mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3153.667mil|Location2.X=3161.333mil|Location1.Y=706.207mil|Location2.Y=713.873mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3153.667mil|Location2.X=3161.333mil|Location1.Y=706.207mil|Location2.Y=713.873mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "D9" (3157.5mil,720.5mil) on Top Overlay And Track (2850.63mil,710.04mil)(3729.37mil,710.04mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5890.875mil|Location2.X=5902.125mil|Location1.Y=4284.574mil|Location2.Y=4295.824mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5890.875mil|Location2.X=5902.125mil|Location1.Y=4284.574mil|Location2.Y=4295.824mil|Absolute=True">Silk To Silk Clearance Constraint: (2.603mil &lt; 10mil) Between Text "K2" (5896.5mil,4296.5mil) on Top Overlay And Track (5655.63mil,4284.96mil)(6534.37mil,4284.96mil) on Top Overlay Silk Text to Silk Clearance [2.603mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4565.875mil|Location2.X=4577.125mil|Location1.Y=4287.074mil|Location2.Y=4298.324mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4565.875mil|Location2.X=4577.125mil|Location1.Y=4287.074mil|Location2.Y=4298.324mil|Absolute=True">Silk To Silk Clearance Constraint: (7.603mil &lt; 10mil) Between Text "K3" (4571.5mil,4301.5mil) on Top Overlay And Track (3870.63mil,4284.96mil)(4749.37mil,4284.96mil) on Top Overlay Silk Text to Silk Clearance [7.603mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6548.447mil|Location2.X=6556.113mil|Location1.Y=631.222mil|Location2.Y=638.889mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6548.447mil|Location2.X=6556.113mil|Location1.Y=631.222mil|Location2.Y=638.889mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "K4" (6552.28mil,695.036mil) on Top Overlay And Track (6559.37mil,380.39mil)(6559.37mil,715.04mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5230.875mil|Location2.X=5242.125mil|Location1.Y=4287.074mil|Location2.Y=4298.324mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5230.875mil|Location2.X=5242.125mil|Location1.Y=4287.074mil|Location2.Y=4298.324mil|Absolute=True">Silk To Silk Clearance Constraint: (7.603mil &lt; 10mil) Between Text "K5" (5236.5mil,4301.5mil) on Top Overlay And Track (4760.63mil,4284.96mil)(5639.37mil,4284.96mil) on Top Overlay Silk Text to Silk Clearance [7.603mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4784.667mil|Location2.X=4792.333mil|Location1.Y=4614.949mil|Location2.Y=4622.616mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4784.667mil|Location2.X=4792.333mil|Location1.Y=4614.949mil|Location2.Y=4622.616mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "P2" (4788.5mil,4618.783mil) on Top Overlay And Track (4760.63mil,4619.61mil)(5639.37mil,4619.61mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5674.667mil|Location2.X=5682.333mil|Location1.Y=4614.949mil|Location2.Y=4622.616mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5674.667mil|Location2.X=5682.333mil|Location1.Y=4614.949mil|Location2.Y=4622.616mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "P3" (5678.5mil,4618.783mil) on Top Overlay And Track (5655.63mil,4619.61mil)(6534.37mil,4619.61mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5637.667mil|Location2.X=5645.333mil|Location1.Y=377.384mil|Location2.Y=385.05mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5637.667mil|Location2.X=5645.333mil|Location1.Y=377.384mil|Location2.Y=385.05mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "P5" (5641.5mil,381.217mil) on Top Overlay And Track (4790.63mil,380.39mil)(5669.37mil,380.39mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3697.666mil|Location2.X=3705.333mil|Location1.Y=372.384mil|Location2.Y=380.05mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3697.666mil|Location2.X=3705.333mil|Location1.Y=372.384mil|Location2.Y=380.05mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "P7" (3701.5mil,376.217mil) on Top Overlay And Track (2850.63mil,375.39mil)(3729.37mil,375.39mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2807.667mil|Location2.X=2815.333mil|Location1.Y=372.385mil|Location2.Y=380.051mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2807.667mil|Location2.X=2815.333mil|Location1.Y=372.385mil|Location2.Y=380.051mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "P8" (2811.5mil,376.218mil) on Top Overlay And Track (1960.63mil,375.39mil)(2839.37mil,375.39mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3563.178mil|Location2.X=3570.845mil|Location1.Y=3841.136mil|Location2.Y=3848.802mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3563.178mil|Location2.X=3570.845mil|Location1.Y=3841.136mil|Location2.Y=3848.802mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "Q1" (3572.497mil,3789.5mil) on Top Overlay And Text "Q3" (3571.5mil,3839.461mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3638.641mil|Location2.X=3646.307mil|Location1.Y=3845.647mil|Location2.Y=3853.314mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3638.641mil|Location2.X=3646.307mil|Location1.Y=3845.647mil|Location2.Y=3853.314mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "Q1" (3572.497mil,3789.5mil) on Top Overlay And Track (3637.638mil,3837.48mil)(3637.638mil,3861.692mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3638.641mil|Location2.X=3646.307mil|Location1.Y=3833.647mil|Location2.Y=3841.313mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3638.641mil|Location2.X=3646.307mil|Location1.Y=3833.647mil|Location2.Y=3841.313mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "Q1" (3572.497mil,3789.5mil) on Top Overlay And Track (3637.638mil,3837.48mil)(3842.362mil,3837.48mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5705.632mil|Location2.X=5713.298mil|Location1.Y=1928.671mil|Location2.Y=1936.338mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5705.632mil|Location2.X=5713.298mil|Location1.Y=1928.671mil|Location2.Y=1936.338mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "Q10" (5684.5mil,1972.492mil) on Top Overlay And Text "Q12" (5699.468mil,1935.862mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5740.647mil|Location2.X=5748.314mil|Location1.Y=1958.662mil|Location2.Y=1966.328mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5740.647mil|Location2.X=5748.314mil|Location1.Y=1958.662mil|Location2.Y=1966.328mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "Q10" (5684.5mil,1972.492mil) on Top Overlay And Track (5490.984mil,1968.818mil)(5739.016mil,1968.818mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5718.647mil|Location2.X=5726.313mil|Location1.Y=1818.707mil|Location2.Y=1826.374mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5718.647mil|Location2.X=5726.313mil|Location1.Y=1818.707mil|Location2.Y=1826.374mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "Q10" (5684.5mil,1972.492mil) on Top Overlay And Track (5722.48mil,1665mil)(5722.48mil,1869.724mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5730.651mil|Location2.X=5738.317mil|Location1.Y=1858.694mil|Location2.Y=1866.361mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5730.651mil|Location2.X=5738.317mil|Location1.Y=1858.694mil|Location2.Y=1866.361mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "Q10" (5684.5mil,1972.492mil) on Top Overlay And Track (5722.48mil,1869.724mil)(5746.692mil,1869.724mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5740.647mil|Location2.X=5748.314mil|Location1.Y=1958.662mil|Location2.Y=1966.328mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5740.647mil|Location2.X=5748.314mil|Location1.Y=1958.662mil|Location2.Y=1966.328mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "Q10" (5684.5mil,1972.492mil) on Top Overlay And Track (5739.016mil,1968.818mil)(5739.016mil,2071.182mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5376.683mil|Location2.X=5384.35mil|Location1.Y=3048.667mil|Location2.Y=3056.333mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5376.683mil|Location2.X=5384.35mil|Location1.Y=3048.667mil|Location2.Y=3056.333mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "Q11" (5405.535mil,3051.5mil) on Top Overlay And Text "Q9" (5430.5mil,3052.5mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5369.92mil|Location2.X=5381.17mil|Location1.Y=2979.603mil|Location2.Y=2990.853mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5369.92mil|Location2.X=5381.17mil|Location1.Y=2979.603mil|Location2.Y=2990.853mil|Absolute=True">Silk To Silk Clearance Constraint: (2.582mil &lt; 10mil) Between Text "Q11" (5405.535mil,3051.5mil) on Top Overlay And Track (5363.15mil,2980mil)(5385.984mil,2980mil) on Top Overlay Silk Text to Silk Clearance [2.582mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5382.151mil|Location2.X=5389.817mil|Location1.Y=2987.686mil|Location2.Y=2995.353mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5382.151mil|Location2.X=5389.817mil|Location1.Y=2987.686mil|Location2.Y=2995.353mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "Q11" (5405.535mil,3051.5mil) on Top Overlay And Track (5385.984mil,2928.818mil)(5385.984mil,3031.182mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5401.702mil|Location2.X=5409.368mil|Location1.Y=3027.349mil|Location2.Y=3035.015mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5401.702mil|Location2.X=5409.368mil|Location1.Y=3027.349mil|Location2.Y=3035.015mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "Q11" (5405.535mil,3051.5mil) on Top Overlay And Track (5385.984mil,3031.182mil)(5634.016mil,3031.182mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5735.622mil|Location2.X=5743.288mil|Location1.Y=1964.985mil|Location2.Y=1972.651mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5735.622mil|Location2.X=5743.288mil|Location1.Y=1964.985mil|Location2.Y=1972.651mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "Q12" (5699.468mil,1935.862mil) on Top Overlay And Track (5490.984mil,1968.818mil)(5739.016mil,1968.818mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5735.622mil|Location2.X=5743.288mil|Location1.Y=1982.013mil|Location2.Y=1989.679mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5735.622mil|Location2.X=5743.288mil|Location1.Y=1982.013mil|Location2.Y=1989.679mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "Q12" (5699.468mil,1935.862mil) on Top Overlay And Track (5739.016mil,1968.818mil)(5739.016mil,2071.182mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2703.63mil|Location2.X=2711.296mil|Location1.Y=1671.167mil|Location2.Y=1678.833mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2703.63mil|Location2.X=2711.296mil|Location1.Y=1671.167mil|Location2.Y=1678.833mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "Q14" (2567.508mil,1624.5mil) on Top Overlay And Track (2683.15mil,1675mil)(2705.984mil,1675mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2703.63mil|Location2.X=2711.296mil|Location1.Y=1620.667mil|Location2.Y=1628.333mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2703.63mil|Location2.X=2711.296mil|Location1.Y=1620.667mil|Location2.Y=1628.333mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "Q14" (2567.508mil,1624.5mil) on Top Overlay And Track (2705.984mil,1623.818mil)(2705.984mil,1726.182mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2703.63mil|Location2.X=2711.296mil|Location1.Y=1620.667mil|Location2.Y=1628.333mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2703.63mil|Location2.X=2711.296mil|Location1.Y=1620.667mil|Location2.Y=1628.333mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "Q14" (2567.508mil,1624.5mil) on Top Overlay And Track (2705.984mil,1623.818mil)(2954.016mil,1623.818mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2788.672mil|Location2.X=2796.338mil|Location1.Y=1620.667mil|Location2.Y=1628.333mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2788.672mil|Location2.X=2796.338mil|Location1.Y=1620.667mil|Location2.Y=1628.333mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "Q15" (2782.508mil,1624.5mil) on Top Overlay And Track (2705.984mil,1623.818mil)(2954.016mil,1623.818mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3127.651mil|Location2.X=3135.317mil|Location1.Y=1680.68mil|Location2.Y=1688.346mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3127.651mil|Location2.X=3135.317mil|Location1.Y=1680.68mil|Location2.Y=1688.346mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "Q16" (2997.508mil,1624.5mil) on Top Overlay And Text "R7" (3081.5mil,1724.5mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3138.167mil|Location2.X=3149.417mil|Location1.Y=1669.467mil|Location2.Y=1680.717mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3138.167mil|Location2.X=3149.417mil|Location1.Y=1669.467mil|Location2.Y=1680.717mil|Absolute=True">Silk To Silk Clearance Constraint: (3.513mil &lt; 10mil) Between Text "Q16" (2997.508mil,1624.5mil) on Top Overlay And Track (3146.338mil,1670mil)(3169.172mil,1670mil) on Top Overlay Silk Text to Silk Clearance [3.513mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3218.672mil|Location2.X=3226.338mil|Location1.Y=1620.667mil|Location2.Y=1628.333mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3218.672mil|Location2.X=3226.338mil|Location1.Y=1620.667mil|Location2.Y=1628.333mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "Q17" (3212.508mil,1624.5mil) on Top Overlay And Track (3169.172mil,1618.818mil)(3417.204mil,1618.818mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3570.845mil|Location2.X=3578.512mil|Location1.Y=1675.68mil|Location2.Y=1683.346mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3570.845mil|Location2.X=3578.512mil|Location1.Y=1675.68mil|Location2.Y=1683.346mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "Q18" (3427.508mil,1624.5mil) on Top Overlay And Text "R9" (3544.688mil,1719.5mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3417.699mil|Location2.X=3428.949mil|Location1.Y=1619.313mil|Location2.Y=1630.563mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3417.699mil|Location2.X=3428.949mil|Location1.Y=1619.313mil|Location2.Y=1630.563mil|Absolute=True">Silk To Silk Clearance Constraint: (9.436mil &lt; 10mil) Between Text "Q18" (3427.508mil,1624.5mil) on Top Overlay And Track (3169.172mil,1618.818mil)(3417.204mil,1618.818mil) on Top Overlay Silk Text to Silk Clearance [9.436mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3416.2mil|Location2.X=3427.45mil|Location1.Y=1668.859mil|Location2.Y=1680.109mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3416.2mil|Location2.X=3427.45mil|Location1.Y=1668.859mil|Location2.Y=1680.109mil|Absolute=True">Silk To Silk Clearance Constraint: (1.367mil &lt; 10mil) Between Text "Q18" (3427.508mil,1624.5mil) on Top Overlay And Track (3417.204mil,1618.818mil)(3417.204mil,1721.182mil) on Top Overlay Silk Text to Silk Clearance [1.367mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3423.675mil|Location2.X=3431.341mil|Location1.Y=1670.65mil|Location2.Y=1678.317mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3423.675mil|Location2.X=3431.341mil|Location1.Y=1670.65mil|Location2.Y=1678.317mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "Q18" (3427.508mil,1624.5mil) on Top Overlay And Track (3417.204mil,1670mil)(3440.038mil,1670mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3638.675mil|Location2.X=3646.341mil|Location1.Y=1670.65mil|Location2.Y=1678.317mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3638.675mil|Location2.X=3646.341mil|Location1.Y=1670.65mil|Location2.Y=1678.317mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "Q19" (3642.508mil,1624.5mil) on Top Overlay And Track (3613.15mil,1675mil)(3635.984mil,1675mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3638.675mil|Location2.X=3646.341mil|Location1.Y=1670.65mil|Location2.Y=1678.317mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3638.675mil|Location2.X=3646.341mil|Location1.Y=1670.65mil|Location2.Y=1678.317mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "Q19" (3642.508mil,1624.5mil) on Top Overlay And Track (3635.984mil,1623.818mil)(3635.984mil,1726.182mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3648.672mil|Location2.X=3656.338mil|Location1.Y=1620.667mil|Location2.Y=1628.333mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3648.672mil|Location2.X=3656.338mil|Location1.Y=1620.667mil|Location2.Y=1628.333mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "Q19" (3642.508mil,1624.5mil) on Top Overlay And Track (3635.984mil,1623.818mil)(3884.016mil,1623.818mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6034.648mil|Location2.X=6045.898mil|Location1.Y=3031.632mil|Location2.Y=3042.882mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6034.648mil|Location2.X=6045.898mil|Location1.Y=3031.632mil|Location2.Y=3042.882mil|Absolute=True">Silk To Silk Clearance Constraint: (4.83mil &lt; 10mil) Between Text "Q2" (6095.5mil,3042.5mil) on Top Overlay And Text "Q4" (6035.54mil,3041.5mil) on Top Overlay Silk Text to Silk Clearance [4.83mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6031.686mil|Location2.X=6039.353mil|Location1.Y=3108.644mil|Location2.Y=3116.311mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6031.686mil|Location2.X=6039.353mil|Location1.Y=3108.644mil|Location2.Y=3116.311mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "Q2" (6095.5mil,3042.5mil) on Top Overlay And Track (6013.308mil,3107.638mil)(6037.52mil,3107.638mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6041.683mil|Location2.X=6049.35mil|Location1.Y=3138.634mil|Location2.Y=3146.301mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6041.683mil|Location2.X=6049.35mil|Location1.Y=3138.634mil|Location2.Y=3146.301mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "Q2" (6095.5mil,3042.5mil) on Top Overlay And Track (6037.52mil,3107.638mil)(6037.52mil,3312.362mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3507.686mil|Location2.X=3515.353mil|Location1.Y=3845.624mil|Location2.Y=3853.291mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3507.686mil|Location2.X=3515.353mil|Location1.Y=3845.624mil|Location2.Y=3853.291mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "Q3" (3571.5mil,3839.461mil) on Top Overlay And Track (3438.818mil,3844.016mil)(3541.182mil,3844.016mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3537.349mil|Location2.X=3545.015mil|Location1.Y=3835.627mil|Location2.Y=3843.294mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3537.349mil|Location2.X=3545.015mil|Location1.Y=3835.627mil|Location2.Y=3843.294mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "Q3" (3571.5mil,3839.461mil) on Top Overlay And Track (3541.182mil,3595.984mil)(3541.182mil,3844.016mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6019.918mil|Location2.X=6031.168mil|Location1.Y=2967.103mil|Location2.Y=2978.353mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6019.918mil|Location2.X=6031.168mil|Location1.Y=2967.103mil|Location2.Y=2978.353mil|Absolute=True">Silk To Silk Clearance Constraint: (7.582mil &lt; 10mil) Between Text "Q4" (6035.54mil,3041.5mil) on Top Overlay And Track (6008.15mil,2965mil)(6030.984mil,2965mil) on Top Overlay Silk Text to Silk Clearance [7.582mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6021.71mil|Location2.X=6029.377mil|Location1.Y=2977.686mil|Location2.Y=2985.353mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6021.71mil|Location2.X=6029.377mil|Location1.Y=2977.686mil|Location2.Y=2985.353mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "Q4" (6035.54mil,3041.5mil) on Top Overlay And Track (6030.984mil,2913.818mil)(6030.984mil,3016.182mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6031.707mil|Location2.X=6039.373mil|Location1.Y=3012.349mil|Location2.Y=3020.015mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6031.707mil|Location2.X=6039.373mil|Location1.Y=3012.349mil|Location2.Y=3020.015mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "Q4" (6035.54mil,3041.5mil) on Top Overlay And Track (6030.984mil,3016.182mil)(6279.016mil,3016.182mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4711.686mil|Location2.X=4719.353mil|Location1.Y=3043.664mil|Location2.Y=3051.33mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4711.686mil|Location2.X=4719.353mil|Location1.Y=3043.664mil|Location2.Y=3051.33mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "Q5" (4775.5mil,3037.5mil) on Top Overlay And Text "Q7" (4715.539mil,3056.5mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4711.686mil|Location2.X=4719.353mil|Location1.Y=3118.805mil|Location2.Y=3126.471mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4711.686mil|Location2.X=4719.353mil|Location1.Y=3118.805mil|Location2.Y=3126.471mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "Q5" (4775.5mil,3037.5mil) on Top Overlay And Track (4693.308mil,3122.638mil)(4717.52mil,3122.638mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4711.686mil|Location2.X=4719.353mil|Location1.Y=3133.634mil|Location2.Y=3141.301mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4711.686mil|Location2.X=4719.353mil|Location1.Y=3133.634mil|Location2.Y=3141.301mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "Q5" (4775.5mil,3037.5mil) on Top Overlay And Track (4717.52mil,3122.638mil)(4717.52mil,3327.362mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6380.667mil|Location2.X=6388.333mil|Location1.Y=1953.65mil|Location2.Y=1961.317mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6380.667mil|Location2.X=6388.333mil|Location1.Y=1953.65mil|Location2.Y=1961.317mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "Q6" (6334.5mil,1957.5mil) on Top Overlay And Text "Q8" (6384.5mil,1938.5mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6382.323mil|Location2.X=6389.99mil|Location1.Y=1870.347mil|Location2.Y=1878.014mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6382.323mil|Location2.X=6389.99mil|Location1.Y=1870.347mil|Location2.Y=1878.014mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "Q6" (6334.5mil,1957.5mil) on Top Overlay And Track (6382.52mil,1667.638mil)(6382.52mil,1872.362mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6383.232mil|Location2.X=6390.899mil|Location1.Y=1868.529mil|Location2.Y=1876.195mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6383.232mil|Location2.X=6390.899mil|Location1.Y=1868.529mil|Location2.Y=1876.195mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "Q6" (6334.5mil,1957.5mil) on Top Overlay And Track (6382.52mil,1872.362mil)(6406.732mil,1872.362mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4711.706mil|Location2.X=4719.373mil|Location1.Y=3002.683mil|Location2.Y=3010.349mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4711.706mil|Location2.X=4719.373mil|Location1.Y=3002.683mil|Location2.Y=3010.349mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "Q7" (4715.539mil,3056.5mil) on Top Overlay And Track (4715.984mil,2913.818mil)(4715.984mil,3016.182mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4711.706mil|Location2.X=4719.373mil|Location1.Y=3012.349mil|Location2.Y=3020.015mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4711.706mil|Location2.X=4719.373mil|Location1.Y=3012.349mil|Location2.Y=3020.015mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "Q7" (4715.539mil,3056.5mil) on Top Overlay And Track (4715.984mil,3016.182mil)(4964.016mil,3016.182mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6380.667mil|Location2.X=6388.333mil|Location1.Y=1974.985mil|Location2.Y=1982.651mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6380.667mil|Location2.X=6388.333mil|Location1.Y=1974.985mil|Location2.Y=1982.651mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "Q8" (6384.5mil,1938.5mil) on Top Overlay And Track (6145.984mil,1978.818mil)(6394.016mil,1978.818mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6390.663mil|Location2.X=6398.33mil|Location1.Y=1994.647mil|Location2.Y=2002.314mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6390.663mil|Location2.X=6398.33mil|Location1.Y=1994.647mil|Location2.Y=2002.314mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "Q8" (6384.5mil,1938.5mil) on Top Overlay And Track (6394.016mil,1978.818mil)(6394.016mil,2081.182mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5366.686mil|Location2.X=5374.353mil|Location1.Y=3118.644mil|Location2.Y=3126.311mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5366.686mil|Location2.X=5374.353mil|Location1.Y=3118.644mil|Location2.Y=3126.311mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "Q9" (5430.5mil,3052.5mil) on Top Overlay And Track (5368.308mil,3117.638mil)(5392.52mil,3117.638mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5388.687mil|Location2.X=5396.353mil|Location1.Y=3148.634mil|Location2.Y=3156.301mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5388.687mil|Location2.X=5396.353mil|Location1.Y=3148.634mil|Location2.Y=3156.301mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "Q9" (5430.5mil,3052.5mil) on Top Overlay And Track (5392.52mil,3117.638mil)(5392.52mil,3322.362mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2981.144mil|Location2.X=2992.394mil|Location1.Y=1784.456mil|Location2.Y=1795.706mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2981.144mil|Location2.X=2992.394mil|Location1.Y=1784.456mil|Location2.Y=1795.706mil|Absolute=True">Silk To Silk Clearance Constraint: (6.039mil &lt; 10mil) Between Text "R10" (3043.5mil,1745.5mil) on Top Overlay And Track (2959.016mil,1795mil)(2981.85mil,1795mil) on Top Overlay Silk Text to Silk Clearance [6.039mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3442.394mil|Location2.X=3453.644mil|Location1.Y=1783.206mil|Location2.Y=1794.456mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3442.394mil|Location2.X=3453.644mil|Location1.Y=1783.206mil|Location2.Y=1794.456mil|Absolute=True">Silk To Silk Clearance Constraint: (9.575mil &lt; 10mil) Between Text "R12" (3508.5mil,1745.5mil) on Top Overlay And Track (3419.016mil,1795mil)(3441.85mil,1795mil) on Top Overlay Silk Text to Silk Clearance [9.574mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2830.667mil|Location2.X=2838.333mil|Location1.Y=706.207mil|Location2.Y=713.873mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2830.667mil|Location2.X=2838.333mil|Location1.Y=706.207mil|Location2.Y=713.873mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "R13" (2834.5mil,718.5mil) on Top Overlay And Track (1960.63mil,710.04mil)(2839.37mil,710.04mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2830.667mil|Location2.X=2838.333mil|Location1.Y=654.686mil|Location2.Y=662.353mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2830.667mil|Location2.X=2838.333mil|Location1.Y=654.686mil|Location2.Y=662.353mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "R13" (2834.5mil,718.5mil) on Top Overlay And Track (2839.37mil,375.39mil)(2839.37mil,710.04mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2837.472mil|Location2.X=2848.722mil|Location1.Y=652.894mil|Location2.Y=664.144mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2837.472mil|Location2.X=2848.722mil|Location1.Y=652.894mil|Location2.Y=664.144mil|Absolute=True">Silk To Silk Clearance Constraint: (7.193mil &lt; 10mil) Between Text "R13" (2834.5mil,718.5mil) on Top Overlay And Track (2850.63mil,375.39mil)(2850.63mil,710.04mil) on Top Overlay Silk Text to Silk Clearance [7.193mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2837.472mil|Location2.X=2848.722mil|Location1.Y=704.415mil|Location2.Y=715.665mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2837.472mil|Location2.X=2848.722mil|Location1.Y=704.415mil|Location2.Y=715.665mil|Absolute=True">Silk To Silk Clearance Constraint: (7.193mil &lt; 10mil) Between Text "R13" (2834.5mil,718.5mil) on Top Overlay And Track (2850.63mil,710.04mil)(3729.37mil,710.04mil) on Top Overlay Silk Text to Silk Clearance [7.193mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3050.667mil|Location2.X=3058.333mil|Location1.Y=706.207mil|Location2.Y=713.873mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3050.667mil|Location2.X=3058.333mil|Location1.Y=706.207mil|Location2.Y=713.873mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "R14" (3054.5mil,718.5mil) on Top Overlay And Track (2850.63mil,710.04mil)(3729.37mil,710.04mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3270.667mil|Location2.X=3278.333mil|Location1.Y=706.207mil|Location2.Y=713.873mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3270.667mil|Location2.X=3278.333mil|Location1.Y=706.207mil|Location2.Y=713.873mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "R15" (3274.5mil,718.5mil) on Top Overlay And Track (2850.63mil,710.04mil)(3729.37mil,710.04mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3490.667mil|Location2.X=3498.333mil|Location1.Y=706.207mil|Location2.Y=713.873mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3490.667mil|Location2.X=3498.333mil|Location1.Y=706.207mil|Location2.Y=713.873mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "R16" (3494.5mil,718.5mil) on Top Overlay And Track (2850.63mil,710.04mil)(3729.37mil,710.04mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3714.14mil|Location2.X=3721.806mil|Location1.Y=706.207mil|Location2.Y=713.873mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3714.14mil|Location2.X=3721.806mil|Location1.Y=706.207mil|Location2.Y=713.873mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "R17" (3749.5mil,718.5mil) on Top Overlay And Track (2850.63mil,710.04mil)(3729.37mil,710.04mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3725.537mil|Location2.X=3733.203mil|Location1.Y=654.686mil|Location2.Y=662.353mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3725.537mil|Location2.X=3733.203mil|Location1.Y=654.686mil|Location2.Y=662.353mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "R17" (3749.5mil,718.5mil) on Top Overlay And Track (3729.37mil,375.39mil)(3729.37mil,710.04mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3745.667mil|Location2.X=3753.333mil|Location1.Y=654.686mil|Location2.Y=662.353mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3745.667mil|Location2.X=3753.333mil|Location1.Y=654.686mil|Location2.Y=662.353mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "R17" (3749.5mil,718.5mil) on Top Overlay And Track (3740.63mil,375.39mil)(3740.63mil,710.04mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3745.667mil|Location2.X=3753.333mil|Location1.Y=706.207mil|Location2.Y=713.873mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3745.667mil|Location2.X=3753.333mil|Location1.Y=706.207mil|Location2.Y=713.873mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "R17" (3749.5mil,718.5mil) on Top Overlay And Track (3740.63mil,710.04mil)(4619.37mil,710.04mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3965.667mil|Location2.X=3973.333mil|Location1.Y=652.874mil|Location2.Y=660.541mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3965.667mil|Location2.X=3973.333mil|Location1.Y=652.874mil|Location2.Y=660.541mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "R18" (3969.5mil,716.688mil) on Top Overlay And Text "R30" (4114.49mil,716.688mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3965.667mil|Location2.X=3973.333mil|Location1.Y=706.207mil|Location2.Y=713.873mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3965.667mil|Location2.X=3973.333mil|Location1.Y=706.207mil|Location2.Y=713.873mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "R18" (3969.5mil,716.688mil) on Top Overlay And Track (3740.63mil,710.04mil)(4619.37mil,710.04mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5087.667mil|Location2.X=5095.333mil|Location1.Y=3030.66mil|Location2.Y=3038.327mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5087.667mil|Location2.X=5095.333mil|Location1.Y=3030.66mil|Location2.Y=3038.327mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "R21" (5091.5mil,3034.493mil) on Top Overlay And Track (5018.122mil,3035mil)(5088.426mil,3035mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5087.667mil|Location2.X=5095.333mil|Location1.Y=3030.66mil|Location2.Y=3038.327mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5087.667mil|Location2.X=5095.333mil|Location1.Y=3030.66mil|Location2.Y=3038.327mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "R21" (5091.5mil,3034.493mil) on Top Overlay And Track (5088.426mil,3035mil)(5088.426mil,3235mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6014.667mil|Location2.X=6022.333mil|Location1.Y=1946.676mil|Location2.Y=1954.343mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6014.667mil|Location2.X=6022.333mil|Location1.Y=1946.676mil|Location2.Y=1954.343mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "R22" (6018.5mil,1950.51mil) on Top Overlay And Track (6021.574mil,1760mil)(6021.574mil,1960mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6014.576mil|Location2.X=6025.826mil|Location1.Y=1950.135mil|Location2.Y=1961.385mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6014.576mil|Location2.X=6025.826mil|Location1.Y=1950.135mil|Location2.Y=1961.385mil|Absolute=True">Silk To Silk Clearance Constraint: (1.039mil &lt; 10mil) Between Text "R22" (6018.5mil,1950.51mil) on Top Overlay And Track (6021.574mil,1960mil)(6091.878mil,1960mil) on Top Overlay Silk Text to Silk Clearance [1.039mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5746.306mil|Location2.X=5757.556mil|Location1.Y=3053.865mil|Location2.Y=3065.115mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5746.306mil|Location2.X=5757.556mil|Location1.Y=3053.865mil|Location2.Y=3065.115mil|Absolute=True">Silk To Silk Clearance Constraint: (9.137mil &lt; 10mil) Between Text "R25" (5761.5mil,3059.49mil) on Top Overlay And Track (5743.426mil,3050mil)(5743.426mil,3250mil) on Top Overlay Silk Text to Silk Clearance [9.137mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5359.667mil|Location2.X=5367.333mil|Location1.Y=1936.676mil|Location2.Y=1944.343mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5359.667mil|Location2.X=5367.333mil|Location1.Y=1936.676mil|Location2.Y=1944.343mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "R26" (5363.5mil,1940.51mil) on Top Overlay And Track (5371.574mil,1750mil)(5371.574mil,1950mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5362.256mil|Location2.X=5373.506mil|Location1.Y=1940.034mil|Location2.Y=1951.284mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5362.256mil|Location2.X=5373.506mil|Location1.Y=1940.034mil|Location2.Y=1951.284mil|Absolute=True">Silk To Silk Clearance Constraint: (3.523mil &lt; 10mil) Between Text "R26" (5363.5mil,1940.51mil) on Top Overlay And Track (5371.574mil,1950mil)(5441.878mil,1950mil) on Top Overlay Silk Text to Silk Clearance [3.523mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5096.676mil|Location2.X=5104.343mil|Location1.Y=1510.379mil|Location2.Y=1518.045mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5096.676mil|Location2.X=5104.343mil|Location1.Y=1510.379mil|Location2.Y=1518.045mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "R27" (5100.51mil,1506.5mil) on Top Overlay And Track (4925.67mil,1514.212mil)(5134.33mil,1514.212mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5126.667mil|Location2.X=5134.333mil|Location1.Y=1562.647mil|Location2.Y=1570.314mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5126.667mil|Location2.X=5134.333mil|Location1.Y=1562.647mil|Location2.Y=1570.314mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "R27" (5100.51mil,1506.5mil) on Top Overlay And Track (5134.33mil,1514.212mil)(5134.33mil,1915.788mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5249.081mil|Location2.X=5256.747mil|Location1.Y=1562.647mil|Location2.Y=1570.314mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5249.081mil|Location2.X=5256.747mil|Location1.Y=1562.647mil|Location2.Y=1570.314mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "R27" (5100.51mil,1506.5mil) on Top Overlay And Track (5252.914mil,732.56mil)(5252.914mil,1610.512mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2640.657mil|Location2.X=2648.324mil|Location1.Y=706.207mil|Location2.Y=713.873mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2640.657mil|Location2.X=2648.324mil|Location1.Y=706.207mil|Location2.Y=713.873mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "R29" (2644.49mil,713.5mil) on Top Overlay And Track (1960.63mil,710.04mil)(2839.37mil,710.04mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4115.693mil|Location2.X=4123.359mil|Location1.Y=662.871mil|Location2.Y=670.538mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4115.693mil|Location2.X=4123.359mil|Location1.Y=662.871mil|Location2.Y=670.538mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "R30" (4114.49mil,716.688mil) on Top Overlay And Text "R31" (4219.493mil,716.688mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4110.657mil|Location2.X=4118.324mil|Location1.Y=706.207mil|Location2.Y=713.873mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4110.657mil|Location2.X=4118.324mil|Location1.Y=706.207mil|Location2.Y=713.873mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "R30" (4114.49mil,716.688mil) on Top Overlay And Track (3740.63mil,710.04mil)(4619.37mil,710.04mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4215.66mil|Location2.X=4223.327mil|Location1.Y=706.207mil|Location2.Y=713.873mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4215.66mil|Location2.X=4223.327mil|Location1.Y=706.207mil|Location2.Y=713.873mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "R31" (4219.493mil,716.688mil) on Top Overlay And Track (3740.63mil,710.04mil)(4619.37mil,710.04mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4431.638mil|Location2.X=4439.304mil|Location1.Y=1642.667mil|Location2.Y=1650.333mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4431.638mil|Location2.X=4439.304mil|Location1.Y=1642.667mil|Location2.Y=1650.333mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "R32" (4315.51mil,1646.5mil) on Top Overlay And Text "R33" (4430.51mil,1646.5mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4556.928mil|Location2.X=4564.595mil|Location1.Y=1267.151mil|Location2.Y=1274.817mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4556.928mil|Location2.X=4564.595mil|Location1.Y=1267.151mil|Location2.Y=1274.817mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "R6" (4613.5mil,1185.5mil) on Top Overlay And Track (4458.818mil,1270.984mil)(4561.182mil,1270.984mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4557.012mil|Location2.X=4564.679mil|Location1.Y=1266.982mil|Location2.Y=1274.649mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4557.012mil|Location2.X=4564.679mil|Location1.Y=1266.982mil|Location2.Y=1274.649mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "R6" (4613.5mil,1185.5mil) on Top Overlay And Track (4561.182mil,1270.984mil)(4561.182mil,1519.016mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3137.647mil|Location2.X=3145.314mil|Location1.Y=1660.686mil|Location2.Y=1668.353mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3137.647mil|Location2.X=3145.314mil|Location1.Y=1660.686mil|Location2.Y=1668.353mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "R7" (3081.5mil,1724.5mil) on Top Overlay And Track (3146.338mil,1670mil)(3169.172mil,1670mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3602.153mil|Location2.X=3613.403mil|Location1.Y=1674.747mil|Location2.Y=1685.997mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3602.153mil|Location2.X=3613.403mil|Location1.Y=1674.747mil|Location2.Y=1685.997mil|Absolute=True">Silk To Silk Clearance Constraint: (7.32mil &lt; 10mil) Between Text "R9" (3544.688mil,1719.5mil) on Top Overlay And Track (3613.15mil,1675mil)(3635.984mil,1675mil) on Top Overlay Silk Text to Silk Clearance [7.32mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2196.837mil|Location2.X=2204.503mil|Location1.Y=1182.667mil|Location2.Y=1190.333mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2196.837mil|Location2.X=2204.503mil|Location1.Y=1182.667mil|Location2.Y=1190.333mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "U1" (2128.497mil,1186.5mil) on Top Overlay And Track (2200.67mil,1174.212mil)(2200.67mil,1575.788mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2202.846mil|Location2.X=2214.096mil|Location1.Y=1174.199mil|Location2.Y=1185.449mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2202.846mil|Location2.X=2214.096mil|Location1.Y=1174.199mil|Location2.Y=1185.449mil|Absolute=True">Silk To Silk Clearance Constraint: (3.351mil &lt; 10mil) Between Text "U1" (2128.497mil,1186.5mil) on Top Overlay And Track (2200.67mil,1174.212mil)(2280mil,1174.212mil) on Top Overlay Silk Text to Silk Clearance [3.351mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2390.904mil|Location2.X=2402.154mil|Location1.Y=1134.551mil|Location2.Y=1145.801mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2390.904mil|Location2.X=2402.154mil|Location1.Y=1134.551mil|Location2.Y=1145.801mil|Absolute=True">Silk To Silk Clearance Constraint: (3.351mil &lt; 10mil) Between Text "U3" (2486.5mil,1133.5mil) on Top Overlay And Track (2325mil,1145.788mil)(2404.33mil,1145.788mil) on Top Overlay Silk Text to Silk Clearance [3.351mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2400.497mil|Location2.X=2408.163mil|Location1.Y=1069.686mil|Location2.Y=1077.353mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2400.497mil|Location2.X=2408.163mil|Location1.Y=1069.686mil|Location2.Y=1077.353mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "U3" (2486.5mil,1133.5mil) on Top Overlay And Track (2404.33mil,744.212mil)(2404.33mil,1145.788mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3814.686mil|Location2.X=3822.353mil|Location1.Y=1309.638mil|Location2.Y=1317.304mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3814.686mil|Location2.X=3822.353mil|Location1.Y=1309.638mil|Location2.Y=1317.304mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "U4" (3878.5mil,1223.5mil) on Top Overlay And Track (3665mil,1311.574mil)(3865mil,1311.574mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3861.167mil|Location2.X=3868.833mil|Location1.Y=1309.638mil|Location2.Y=1317.304mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3861.167mil|Location2.X=3868.833mil|Location1.Y=1309.638mil|Location2.Y=1317.304mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "U4" (3878.5mil,1223.5mil) on Top Overlay And Track (3865mil,1311.574mil)(3865mil,1508.426mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4714.654mil|Location2.X=4722.32mil|Location1.Y=1227.647mil|Location2.Y=1235.314mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4714.654mil|Location2.X=4722.32mil|Location1.Y=1227.647mil|Location2.Y=1235.314mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "U7" (4678.5mil,1171.5mil) on Top Overlay And Track (4718.15mil,1235mil)(4740.984mil,1235mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4737.151mil|Location2.X=4744.817mil|Location1.Y=1227.647mil|Location2.Y=1235.314mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4737.151mil|Location2.X=4744.817mil|Location1.Y=1227.647mil|Location2.Y=1235.314mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "U7" (4678.5mil,1171.5mil) on Top Overlay And Track (4740.984mil,1183.818mil)(4740.984mil,1286.182mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4737.06mil|Location2.X=4744.726mil|Location1.Y=1180.076mil|Location2.Y=1187.742mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\dell\Documents\iiot\with dev module.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4737.06mil|Location2.X=4744.726mil|Location1.Y=1180.076mil|Location2.Y=1187.742mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "U7" (4678.5mil,1171.5mil) on Top Overlay And Track (4740.984mil,1183.818mil)(4989.016mil,1183.818mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br></body>
+</html>

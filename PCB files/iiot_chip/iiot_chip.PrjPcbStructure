@@ -1,0 +1,3 @@
+Record=TopLevelDocument|FileName=chip.SchDoc|SheetNumber=3
+Record=NoMainPathDocument|SourceDocument=chip.SchDoc|FileName=inputs.SchDoc|SheetNumber=2
+Record=NoMainPathDocument|SourceDocument=chip.SchDoc|FileName=outputs.SchDoc|SheetNumber=1

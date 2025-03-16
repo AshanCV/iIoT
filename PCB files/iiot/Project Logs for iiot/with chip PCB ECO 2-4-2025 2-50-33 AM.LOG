@@ -1,0 +1,79 @@
+Added Component: Designator=U(MODULE_ESP32-DEVKITC)
+Add component (AddParameter): Name = "Availability"; Value = "Unavailable"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "MF"; Value = "Espressif Systems"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "MP"; Value = "ESP32-DEVKITC-32D-F"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Package"; Value = "None"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Price"; Value = "None"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "SnapEDA_Link"; Value = "https://www.snapeda.com/parts/ESP32-DEVKITC-32D-F/Espressif%20Systems/view-part/4220172/?ref=snap"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = ""; VariantName = "[No Variations]"
+Added Pin To Net: NetName=NetR7_1 Pin=U-5
+Added Pin To Net: NetName=NetR8_1 Pin=U-6
+Added Pin To Net: NetName=NetR9_1 Pin=U-7
+Added Pin To Net: NetName=NetR10_1 Pin=U-8
+Added Pin To Net: NetName=NetR11_1 Pin=U-9
+Added Pin To Net: NetName=NetR12_1 Pin=U-10
+Added Pin To Net: NetName=GND Pin=U-14
+Added Pin To Net: NetName=+5 Pin=U-19
+Added Pin To Net: NetName=NetR1_2 Pin=U-26
+Added Pin To Net: NetName=NetR2_2 Pin=U-27
+Added Pin To Net: NetName=NetR3_2 Pin=U-28
+Added Pin To Net: NetName=NetR4_2 Pin=U-29
+Added Pin To Net: NetName=NetR5_2 Pin=U-30
+Added Pin To Net: NetName=NetR6_2 Pin=U-31
+Added Pin To Net: NetName=GND Pin=U-32
+Added Pin To Net: NetName=NetU2_3 Pin=U-33
+Added Pin To Net: NetName=NetU2_2 Pin=U-36
+Added Pin To Net: NetName=GND Pin=U-38
+Added Class: Name=dev module_Nets
+Added Class: Name=inputs_Nets
+Added Class: Name=J1_Nets
+Added Class: Name=J2_Nets
+Added Class: Name=J3_Nets
+Added Class: Name=J4_Nets
+Added Class: Name=J5_Nets
+Added Class: Name=J6_Nets
+Added Class: Name=J7_Nets
+Added Class: Name=J8_Nets
+Added Class: Name=K1_Nets
+Added Class: Name=K2_Nets
+Added Class: Name=K3_Nets
+Added Class: Name=K4_Nets
+Added Class: Name=K5_Nets
+Added Class: Name=K6_Nets
+Added Class: Name=MD1_Nets
+Added Class: Name=outputs_Nets
+Added Class: Name=R1_Nets
+Added Class: Name=R2_Nets
+Added Class: Name=R3_Nets
+Added Class: Name=R4_Nets
+Added Class: Name=R5_Nets
+Added Class: Name=R6_Nets
+Added Class: Name=R7_Nets
+Added Class: Name=R8_Nets
+Added Class: Name=R9_Nets
+Added Class: Name=R10_Nets
+Added Class: Name=R11_Nets
+Added Class: Name=R12_Nets
+Added Class: Name=R13_Nets
+Added Class: Name=R14_Nets
+Added Class: Name=R15_Nets
+Added Class: Name=R16_Nets
+Added Class: Name=R17_Nets
+Added Class: Name=R18_Nets
+Added Class: Name=U1_Nets
+Added Class: Name=U2_Nets
+Added Class: Name=U3_Nets
+Added Class: Name=U4_Nets
+Added Class: Name=U5_Nets
+Added Class: Name=U6_Nets
+Added Class: Name=U7_Nets
+Added Class: Name=U8_Nets
+Added Class: Name=U9_Nets
+Added Class: Name=U10_Nets
+Added Class: Name=U11_Nets
+Added Class: Name=U12_Nets
+Added Class: Name=U13_Nets
+Added Class: Name=U14_Nets
+Added Class: Name=U_Nets
+Added Class: Name=with chip_Nets
+Added Member To Class: ClassName=dev module Member=Component U ESP32-DEVKITC

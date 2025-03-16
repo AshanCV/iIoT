@@ -1,0 +1,10 @@
+Added Component: Designator=J1(FP-B2B-XH-A_LF_SN-MFG)
+Added Component: Designator=P8(691311500104)
+Add Pin To Net: Unknown Pin: Pin J1-1
+Add Pin To Net: Unknown Pin: Pin J1-2
+Add Pin To Net: Unknown Pin: Pin P8-1
+Add Pin To Net: Unknown Pin: Pin P8-2
+Add Pin To Net: Unknown Pin: Pin P8-3
+Add Pin To Net: Unknown Pin: Pin P8-4
+Add Class Member: Failed to add class member : Component J1 B2B-XH-A(LF)(SN)
+Add Class Member: Failed to add class member : Component P8 691311500104
